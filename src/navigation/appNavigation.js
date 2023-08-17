@@ -63,7 +63,7 @@ function HomeTabs() {
           backgroundColor: themeColors.bgLight,
         },
         tabBarItemStyle: {
-          marginTop: ios ? 30 : 0,
+          marginTop: ios ? 0 : 0,
         },
       })}
     >
