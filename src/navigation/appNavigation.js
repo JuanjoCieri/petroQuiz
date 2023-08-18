@@ -19,6 +19,7 @@ import {
   TrophyIcon as TrophySolid,
   HeartIcon as HeartSolid,
 } from "react-native-heroicons/solid";
+import Leaderboard from "../screens/LeaderboardScreen/Leaderboard";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -32,7 +33,7 @@ export default function AppNavigation() {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
-          contentStyle: { backgroundColor: "white" },
+          contentStyle: { backgroundColor: "none" },
         }}
       >
         <Stack.Screen
@@ -40,7 +41,11 @@ export default function AppNavigation() {
           options={{ headerShown: false }}
           component={HomeTabs}
         />
-        {/* <Stack.Screen name="Product" options={{headerShown: false}} component={ProductScreen} /> */}
+        <Stack.Screen
+          name="Leaderboard"
+          options={{ headerShown: false }}
+          component={Leaderboard}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -68,7 +73,7 @@ function HomeTabs() {
       })}
     >
       <Tab.Screen name="home" component={HomeScreen} />
-      <Tab.Screen name="hotme" component={HomeScreen} />
+      <Tab.Screen name="leaderboard" component={Leaderboard} />
       <Tab.Screen name="favourite" component={HomeScreen} />
       <Tab.Screen name="cart" component={HomeScreen} />
     </Tab.Navigator>
@@ -84,7 +89,7 @@ const menuIcons = (route, focused) => {
     ) : (
       <HomeOutline size="30" strokeWidth={2} color="white" />
     );
-  } else if (route.name === "hotme") {
+  } else if (route.name === "leaderboard") {
     icon = focused ? (
       <HeartSolid size="30" color={themeColors.bgDark} />
     ) : (

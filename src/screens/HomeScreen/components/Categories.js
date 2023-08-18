@@ -1,4 +1,7 @@
 import { Text, View, StyleSheet, ScrollView } from "react-native";
+import { FlatList } from "react-native";
+import categories from "../../../mocks/categories";
+import CategoriesCard from "./CategoriesCard";
 
 export default function Categories() {
   return (
@@ -9,8 +12,13 @@ export default function Categories() {
         </Text>
       </View>
       <ScrollView style={styles.CategoriesContainer}>
-        <View style={styles.CategoryDiv}></View>
-        <View style={styles.CategoryDiv}></View>
+        <FlatList
+          data={categories}
+          ItemSeparatorComponent={() => <Text> </Text>}
+          renderItem={({ item: category }) => (
+            <CategoriesCard categoryName={category.categoryName} />
+          )}
+        />
       </ScrollView>
     </View>
   );
@@ -21,12 +29,10 @@ const styles = StyleSheet.create({
     color: "#371B1B",
     fontWeight: "500",
   },
-  CategoriesContainer: {
-    
-  },
+  CategoriesContainer: {},
   CategoryDiv: {
     width: 149,
     height: 149,
-    backgroundColor: "red"
-  }
+    backgroundColor: "red",
+  },
 });
