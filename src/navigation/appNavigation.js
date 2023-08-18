@@ -12,14 +12,17 @@ import {
   TrophyIcon as TrophyOutline,
   HeartIcon as HeartOutline,
   ShoppingBagIcon as BagOutline,
+  ChartBarIcon as ChartBarOutline
 } from "react-native-heroicons/outline";
 import {
   UserIcon as UserSolid,
   HomeIcon as HomeSolid,
   TrophyIcon as TrophySolid,
   HeartIcon as HeartSolid,
+  ChartBarIcon as ChartBarSolid
 } from "react-native-heroicons/solid";
 import Leaderboard from "../screens/LeaderboardScreen/Leaderboard";
+import PlayScreen from "../screens/PlayScreen/PlayScreen";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -46,6 +49,11 @@ export default function AppNavigation() {
           options={{ headerShown: false }}
           component={Leaderboard}
         />
+        <Stack.Screen
+          name="PlayScreen"
+          options={{ headerShown: false }}
+          component={PlayScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -59,12 +67,13 @@ function HomeTabs() {
         tabBarShowLabel: false,
         tabBarIcon: ({ focused }) => menuIcons(route, focused),
         tabBarStyle: {
-          marginBottom: 20,
+          // marginBottom: 20,
           height: 75,
           alignItems: "around",
-
-          borderRadius: 100,
-          marginHorizontal: 20,
+          // borderRadius: 100,
+          borderTopLeftRadius: 40,
+          borderTopRightRadius: 40,
+          // marginHorizontal: 20,
           backgroundColor: themeColors.bgLight,
         },
         tabBarItemStyle: {
@@ -75,7 +84,7 @@ function HomeTabs() {
       <Tab.Screen name="home" component={HomeScreen} />
       <Tab.Screen name="leaderboard" component={Leaderboard} />
       <Tab.Screen name="favourite" component={HomeScreen} />
-      <Tab.Screen name="cart" component={HomeScreen} />
+      <Tab.Screen name="PlayScreen" component={PlayScreen} />
     </Tab.Navigator>
   );
 }
@@ -91,9 +100,9 @@ const menuIcons = (route, focused) => {
     );
   } else if (route.name === "leaderboard") {
     icon = focused ? (
-      <HeartSolid size="30" color={themeColors.bgDark} />
+      <ChartBarSolid size="30" color={themeColors.bgDark} />
     ) : (
-      <HeartOutline size="30" strokeWidth={2} color="white" />
+      <ChartBarOutline size="30" strokeWidth={2} color="white" />
     );
   } else if (route.name === "favourite") {
     icon = focused ? (

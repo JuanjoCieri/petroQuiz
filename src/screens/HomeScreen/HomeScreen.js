@@ -1,16 +1,16 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import Title from "./components/Title";
 import Idk from "./components/Idk";
 import Categories from "./components/Categories";
 
 export default function HomeScreen() {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Title />
       <Idk />
       <Categories />
-    </View>
+    </ScrollView>
 
   );
 }

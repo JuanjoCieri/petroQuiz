@@ -1,10 +1,18 @@
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, ScrollView, FlatList } from "react-native";
+import users from "../../../mocks/users"
+import UserCard from "./UserCard"
 
 export default function RankingList () {
     return (
-        <View style={styles.container}>
-            <Text>Hola</Text>
-        </View>
+        <ScrollView style={styles.container}>
+        <FlatList
+          data={users}
+          ItemSeparatorComponent={() => <Text> </Text>}
+          renderItem={({ item: user }) => (
+            <UserCard userPosition={user.userId} userName={user.userName} userPoints={user.userPoints}/>
+          )}
+        />
+      </ScrollView>
     )
 }
 
@@ -13,8 +21,11 @@ const styles = StyleSheet.create({
       backgroundColor: "white",
       width: "100%",
       height: "50%",
-      borderRadius: 40,
+      borderTopLeftRadius: 40,
+      borderTopRightRadius: 40,
       position: "absolute",
-      bottom: 0
+      bottom: 0,
+      paddingHorizontal: 25,
+      paddingVertical: 40
     },
   });
