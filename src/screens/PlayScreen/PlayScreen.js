@@ -1,12 +1,25 @@
-import {View, StyleSheet} from "react-native"
-import SpinWheel from "./components/SpinWheel"
+import React, { useState } from "react";
+import { View, StyleSheet, Text } from "react-native";
+import SpinWheel from "./components/SpinWheel";
 
-export default function PlayScreen () {
+export default function PlayScreen() {
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
+  const handleOptionSelected = (option) => {
+    setSelectedCategory(option); 
+  };
+
   return (
     <View style={styles.container}>
-      <SpinWheel />
+      {selectedCategory ? (
+        <View>
+          <Text>{selectedCategory}</Text>
+        </View>
+      ) : (
+        <SpinWheel onOptionSelected={handleOptionSelected} />
+      )}
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -16,6 +29,3 @@ const styles = StyleSheet.create({
     height: "100%",
   },
 });
-
-
-// F9CA86

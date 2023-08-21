@@ -9,7 +9,7 @@ import {
   ImageBackground,
 } from "react-native";
 
-const SpinWheel = () => {
+const SpinWheel = ({ onOptionSelected }) => {
   const wheelRef = useRef(new Animated.Value(0));
   const [spinning, setSpinning] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
@@ -17,12 +17,12 @@ const SpinWheel = () => {
 
   // Define your wheel data (sections, colors, labels, etc.)
   const wheelData = [
-    { label: "Option 1", color: "red" },
-    { label: "Option 6", color: "blue" },
-    { label: "Option 5", color: "green" },
-    { label: "Option 4", color: "yellow" },
-    { label: "Option 3", color: "grey" },
-    { label: "Option 2", color: "green" },
+    { label: "history", color: "red" },
+    { label: "society_and_culture", color: "blue" },
+    { label: "arts_and_literature", color: "green" },
+    { label: "music", color: "yellow" },
+    { label: "food_and_drink", color: "grey" },
+    { label: "science", color: "green" },
   ];
 
   const onSpin = () => {
@@ -44,6 +44,7 @@ const SpinWheel = () => {
           (finalAngle % 360) / (360 / wheelData.length)
         );
         setSelectedOption(wheelData[selectedSection].label);
+        onOptionSelected(wheelData[selectedSection].label);
         setSelectedOptionIndex(null); // Store the selected option index
         setSpinning(false);
       });
