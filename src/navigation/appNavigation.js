@@ -36,7 +36,7 @@ export default function AppNavigation() {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
-          contentStyle: { backgroundColor: "none" },
+          contentStyle: { backgroundColor: "transparent" },
         }}
       >
         <Stack.Screen
@@ -67,13 +67,10 @@ function HomeTabs() {
         tabBarShowLabel: false,
         tabBarIcon: ({ focused }) => menuIcons(route, focused),
         tabBarStyle: {
-          // marginBottom: 20,
           height: 75,
           alignItems: "around",
-          // borderRadius: 100,
           borderTopLeftRadius: 40,
           borderTopRightRadius: 40,
-          // marginHorizontal: 20,
           backgroundColor: themeColors.bgLight,
         },
         tabBarItemStyle: {
