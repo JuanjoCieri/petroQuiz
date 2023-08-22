@@ -1,4 +1,4 @@
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Image } from "react-native";
 import { CurrencyDollarIcon } from "react-native-heroicons/solid";
 
 export default function UserCard({
@@ -12,12 +12,17 @@ export default function UserCard({
       <View style={styles.userPosition}>
         <Text className="text-2xl">{userPosition}</Text>
       </View>
-      <View>
-        <Text style={styles.userName} className="text-lg">{userName}</Text>
+      <View style={styles.userInfo}>
+        <Image source={{ uri: userImage }} style={styles.userImage} />
+        <Text style={styles.userName} className="text-lg">
+          {userName}
+        </Text>
       </View>
       <View style={styles.userPointsContainer}>
-        <CurrencyDollarIcon color="orange"/>
-        <Text style={styles.userPoints} className="text-xs">{userPoints} puntos</Text>
+        <CurrencyDollarIcon color="orange" />
+        <Text style={styles.userPoints} className="text-xs">
+          {userPoints} puntos
+        </Text>
       </View>
     </View>
   );
@@ -32,21 +37,33 @@ const styles = StyleSheet.create({
     backgroundColor: "#F5F8FA",
     paddingHorizontal: 15,
     paddingVertical: 25,
-    borderRadius: 20
+    borderRadius: 20,
   },
   userPosition: {
-    color: "#766362"
+    color: "#766362",
   },
   userName: {
-    color: "#543B3B"
+    color: "#543B3B",
+  },
+  userInfo: {
+    maxWidth: "30%",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 10,
+  },
+  userImage: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
   },
   userPointsContainer: {
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    gap: 2
+    gap: 2,
   },
   userPoints: {
-    color: "#969696"
-  }
+    color: "#969696",
+  },
 });

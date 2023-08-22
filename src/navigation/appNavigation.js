@@ -2,27 +2,25 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "../screens/HomeScreen/HomeScreen";
-import { Dimensions, LogBox, Platform, Text, View } from "react-native";
+import { LogBox, Platform, View } from "react-native";
 import { themeColors } from "../theme";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
-  UserIcon as UserOutline,
   HomeIcon as HomeOutline,
   TrophyIcon as TrophyOutline,
-  HeartIcon as HeartOutline,
-  ShoppingBagIcon as BagOutline,
-  ChartBarIcon as ChartBarOutline
+  ChartBarIcon as ChartBarOutline,
+  UserIcon as UserOutline
 } from "react-native-heroicons/outline";
 import {
-  UserIcon as UserSolid,
   HomeIcon as HomeSolid,
   TrophyIcon as TrophySolid,
-  HeartIcon as HeartSolid,
-  ChartBarIcon as ChartBarSolid
+  ChartBarIcon as ChartBarSolid,
+  UserIcon as UserSolid
 } from "react-native-heroicons/solid";
 import Leaderboard from "../screens/LeaderboardScreen/Leaderboard";
 import PlayScreen from "../screens/PlayScreen/PlayScreen";
+import TournamentScreen from "../screens/TournamentsScreen/TournamentScreen";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -48,6 +46,11 @@ export default function AppNavigation() {
           name="Leaderboard"
           options={{ headerShown: false }}
           component={Leaderboard}
+        />
+        <Stack.Screen
+          name="Tournament"
+          options={{ headerShown: false }}
+          component={TournamentScreen}
         />
         <Stack.Screen
           name="PlayScreen"
@@ -80,7 +83,7 @@ function HomeTabs() {
     >
       <Tab.Screen name="home" component={HomeScreen} />
       <Tab.Screen name="leaderboard" component={Leaderboard} />
-      <Tab.Screen name="favourite" component={HomeScreen} />
+      <Tab.Screen name="Tournament" component={TournamentScreen} />
       <Tab.Screen name="PlayScreen" component={PlayScreen} />
     </Tab.Navigator>
   );
@@ -101,13 +104,13 @@ const menuIcons = (route, focused) => {
     ) : (
       <ChartBarOutline size="30" strokeWidth={2} color="white" />
     );
-  } else if (route.name === "favourite") {
+  } else if (route.name === "Tournament") {
     icon = focused ? (
       <TrophySolid size="30" color={themeColors.bgDark} />
     ) : (
       <TrophyOutline size="30" strokeWidth={2} color="white" />
     );
-  } else if (route.name === "cart") {
+  } else if (route.name === "PlayScreen") {
     icon = focused ? (
       <UserSolid size="30" color={themeColors.bgDark} />
     ) : (

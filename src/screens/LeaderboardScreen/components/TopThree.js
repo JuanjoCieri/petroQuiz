@@ -1,24 +1,44 @@
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, Image } from "react-native";
+import users from "../../../mocks/users";
 
 export default function TopThree() {
+  const firstUsers = users.slice(0, 3);
   return (
     <View style={styles.container}>
       <View style={styles.topContainer}>
-        <View style={styles.topImage}></View>
+        <Image
+          source={{ uri: firstUsers[0].userImage }}
+          style={styles.userImage}
+        />
+        {/* <View style={styles.topImage}></View> */}
         <View style={styles.topTwo}>
-          <Text className="text-xl">2</Text>
+          <Text style={styles.topNumberText} className="text-xl">
+            2
+          </Text>
         </View>
       </View>
       <View style={styles.topContainer}>
-        <View style={styles.topImage}></View>
+        <Image
+          source={{ uri: firstUsers[1].userImage }}
+          style={styles.userImage}
+        />
+        {/* <View style={styles.topImage}></View> */}
         <View style={styles.topOne}>
-          <Text className="text-xl">1</Text>
+          <Text style={styles.topNumberText} className="text-xl">
+            1
+          </Text>
         </View>
       </View>
       <View style={styles.topContainer}>
-        <View style={styles.topImage}></View>
+        <Image
+          source={{ uri: firstUsers[2].userImage }}
+          style={styles.userImage}
+        />
+        {/* <View style={styles.topImage}></View> */}
         <View style={styles.topThree}>
-          <Text className="text-xl">3</Text>
+          <Text style={styles.topNumberText} className="text-xl">
+            3
+          </Text>
         </View>
       </View>
     </View>
@@ -38,6 +58,12 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+  },
+  userImage: {
+    width: 60,
+    height: 60,
+    borderRadius: "100%",
+    marginBottom: 10,
   },
   topImage: {
     backgroundColor: "white",
@@ -75,5 +101,8 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
     paddingTop: 15,
+  },
+  topNumberText: {
+    color: "white",
   },
 });
