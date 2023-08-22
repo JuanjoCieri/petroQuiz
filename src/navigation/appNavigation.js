@@ -21,6 +21,7 @@ import {
 import Leaderboard from "../screens/LeaderboardScreen/Leaderboard";
 import PlayScreen from "../screens/PlayScreen/PlayScreen";
 import TournamentScreen from "../screens/TournamentsScreen/TournamentScreen";
+import ProfileScreen from "../screens/ProfileScreen/ProfileScreen";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -35,7 +36,9 @@ export default function AppNavigation() {
       <Stack.Navigator
         screenOptions={{
           contentStyle: { backgroundColor: "transparent" },
+          headerShown: false,
         }}
+        headerMode="none"
       >
         <Stack.Screen
           name="Home"
@@ -81,10 +84,10 @@ function HomeTabs() {
         },
       })}
     >
-      <Tab.Screen name="home" component={HomeScreen} />
-      <Tab.Screen name="leaderboard" component={Leaderboard} />
-      <Tab.Screen name="Tournament" component={TournamentScreen} />
-      <Tab.Screen name="PlayScreen" component={PlayScreen} />
+      <Tab.Screen name="HomeScreen" component={HomeScreen} />
+      <Tab.Screen name="LeaderboardScreen" component={Leaderboard} />
+      <Tab.Screen name="TournamentScreen" component={TournamentScreen} />
+      <Tab.Screen name="ProfileScreen" component={ProfileScreen} />
     </Tab.Navigator>
   );
 }
@@ -92,25 +95,25 @@ function HomeTabs() {
 const menuIcons = (route, focused) => {
   let icon;
 
-  if (route.name === "home") {
+  if (route.name === "HomeScreen") {
     icon = focused ? (
       <HomeSolid size="30" color={themeColors.bgDark} />
     ) : (
       <HomeOutline size="30" strokeWidth={2} color="white" />
     );
-  } else if (route.name === "leaderboard") {
+  } else if (route.name === "LeaderboardScreen") {
     icon = focused ? (
       <ChartBarSolid size="30" color={themeColors.bgDark} />
     ) : (
       <ChartBarOutline size="30" strokeWidth={2} color="white" />
     );
-  } else if (route.name === "Tournament") {
+  } else if (route.name === "TournamentScreen") {
     icon = focused ? (
       <TrophySolid size="30" color={themeColors.bgDark} />
     ) : (
       <TrophyOutline size="30" strokeWidth={2} color="white" />
     );
-  } else if (route.name === "PlayScreen") {
+  } else if (route.name === "ProfileScreen") {
     icon = focused ? (
       <UserSolid size="30" color={themeColors.bgDark} />
     ) : (

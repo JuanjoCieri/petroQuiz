@@ -4,6 +4,7 @@ import SpinWheel from "./components/SpinWheel";
 import Play from "./components/Play";
 import IsCorrectModal from "./components/IsCorrectModal";
 import questions from "../../mocks/questions";
+import Results from "./components/Results";
 
 export default function PlayScreen() {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -69,13 +70,10 @@ export default function PlayScreen() {
             handleOptionSelected={handleOptionSelected}
           />
         ) : (
-          <SpinWheel onOptionSelected={setSelectedCategory} />
+          <SpinWheel onOptionSelected={setSelectedCategory} questionsAnswered={questionsAnswered} />
         )
       ) : (
-        <View>
-          <Text>Has respondido 3 preguntas.</Text>
-          <Text>Puntaje total: {score}</Text>
-        </View>
+        <Results score={score}/>
       )}
 
       <IsCorrectModal

@@ -1,16 +1,28 @@
-import { Text, View, StyleSheet } from "react-native";
+import React from "react";
+import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import RankingList from "./components/RankingList";
 import { StatusBar } from "expo-status-bar";
+import { useNavigation } from "@react-navigation/native"; // Import useNavigation
 import { ChevronLeftIcon } from "react-native-heroicons/solid";
 import TopThree from "./components/TopThree";
 
 export default function Leaderboard() {
+  const navigation = useNavigation(); // Get the navigation object
+
+  const handleBackToHome = () => {
+    navigation.goBack(); // Go back to the previous screen (Home)
+  };
+
   return (
     <View style={styles.container}>
       <View className="py-5">
         <StatusBar />
         <View style={styles.header}>
-          <ChevronLeftIcon size={30} color="black" />
+          {/* Volver al inició en este icono */}
+          <TouchableOpacity onPress={handleBackToHome}>
+            <ChevronLeftIcon size={30} color="black" />
+          </TouchableOpacity>
+          {/* Volver al inició en este icono */}
           <Text className="text-3xl">Ranking</Text>
           <ChevronLeftIcon size={30} color="transparent" />
         </View>
@@ -26,7 +38,7 @@ const styles = StyleSheet.create({
     padding: 20,
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center"
+    alignItems: "center",
   },
   container: {
     backgroundColor: "#F9CA86",

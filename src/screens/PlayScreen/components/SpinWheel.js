@@ -9,7 +9,7 @@ import {
   ImageBackground,
 } from "react-native";
 
-const SpinWheel = ({ onOptionSelected }) => {
+const SpinWheel = ({ onOptionSelected, questionsAnswered }) => {
   const wheelRef = useRef(new Animated.Value(0));
   const [spinning, setSpinning] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
@@ -122,7 +122,7 @@ const SpinWheel = ({ onOptionSelected }) => {
           <Image source={require("../../../../assets/images/Ellip.png")} />
         </TouchableOpacity>
         <View>
-          <Text style={{ position: "absolute" }}>Hola {selectedOption}</Text>
+          <Text style={{ position: "absolute" }}>Ronda {questionsAnswered + 1} / 3</Text>
         </View>
       </View>
     </View>

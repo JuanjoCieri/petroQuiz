@@ -3,16 +3,16 @@ import presionIcon from "../../assets/categoryIcons/presionIcon.png"
 const categories = [
     {
         categoryId: 1,
-        categoryName: "Presion",
+        categoryName: "Slot 1",
         categoryImage: presionIcon
     },
     {
         categoryId: 2,
-        categoryName: "Presion",
+        categoryName: "Slot 2",
         categoryImage: presionIcon
     },{
         categoryId: 3,
-        categoryName: "Presion",
+        categoryName: "Slot 3",
         categoryImage: presionIcon
     },
 ]
