@@ -1,7 +1,27 @@
 import { Text, View, StyleSheet, Image } from "react-native";
 import users from "../../../mocks/users";
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from "react-native-reanimated";
+import { useEffect } from "react";
+import { TouchableWithoutFeedback } from "react-native-web";
 
 export default function TopThree() {
+  const animation = useSharedValue({ height: 200 });
+
+  const animationStyle = useAnimatedStyle(() => {
+    return {
+      height: withTiming(animation.value.height, {
+        duration: 600,
+      }),
+    };
+  });
+
+  const doAnimation = () => {
+    animation.value = { height: "80%" };
+  };
   const firstUsers = users.slice(0, 3);
   return (
     <View style={styles.container}>
@@ -10,19 +30,24 @@ export default function TopThree() {
           source={{ uri: firstUsers[0].userImage }}
           style={styles.userImage}
         />
-        {/* <View style={styles.topImage}></View> */}
-        <View style={styles.topTwo}>
+        <Animated.View style={[styles.topTwo, animationStyle]}>
           <Text style={styles.topNumberText} className="text-xl">
             2
           </Text>
-        </View>
+        </Animated.View>
       </View>
       <View style={styles.topContainer}>
+      <TouchableWithoutFeedback
+        onPress={() => {
+          animation.value = { height: 800 };
+        }}
+      >
+        <Text>HOla</Text>
+      </TouchableWithoutFeedback>
         <Image
           source={{ uri: firstUsers[1].userImage }}
           style={styles.userImage}
         />
-        {/* <View style={styles.topImage}></View> */}
         <View style={styles.topOne}>
           <Text style={styles.topNumberText} className="text-xl">
             1
@@ -34,7 +59,6 @@ export default function TopThree() {
           source={{ uri: firstUsers[2].userImage }}
           style={styles.userImage}
         />
-        {/* <View style={styles.topImage}></View> */}
         <View style={styles.topThree}>
           <Text style={styles.topNumberText} className="text-xl">
             3

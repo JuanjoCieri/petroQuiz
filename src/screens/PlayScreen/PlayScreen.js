@@ -15,10 +15,11 @@ export default function PlayScreen() {
   const [isLastQuestion, setIsLastQuestion] = useState(false);
 
   const handleOptionSelected = (option, isCorrect) => {
-    setSelectedCategory(null);
-    setRandomQuestion(null);
-
-    setIsCorrectModalVisible(true);
+    setTimeout(() => {
+      setSelectedCategory(null);
+      setRandomQuestion(null);
+      setIsCorrectModalVisible(true);
+    }, 1500);
 
     if (isCorrect) {
       setScore(score + 1);
@@ -70,10 +71,13 @@ export default function PlayScreen() {
             handleOptionSelected={handleOptionSelected}
           />
         ) : (
-          <SpinWheel onOptionSelected={setSelectedCategory} questionsAnswered={questionsAnswered} />
+          <SpinWheel
+            onOptionSelected={setSelectedCategory}
+            questionsAnswered={questionsAnswered}
+          />
         )
       ) : (
-        <Results score={score}/>
+        <Results score={score} />
       )}
 
       <IsCorrectModal

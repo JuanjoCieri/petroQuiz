@@ -32,7 +32,7 @@ export default function Play({
         setIntervalId(null);
       }
     };
-  }, []); // Cambio aquí, arreglo vacío para ejecutar solo al montar
+  }, []);
 
   const [selectedOption, setSelectedOption] = useState(null);
 
