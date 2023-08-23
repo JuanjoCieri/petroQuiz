@@ -18,11 +18,9 @@ export default function Leaderboard() {
       <View className="py-5">
         <StatusBar />
         <View style={styles.header}>
-          {/* Volver al inició en este icono */}
           <TouchableOpacity onPress={handleBackToHome}>
             <ChevronLeftIcon size={30} color="black" />
           </TouchableOpacity>
-          {/* Volver al inició en este icono */}
           <Text className="text-3xl">Ranking</Text>
           <ChevronLeftIcon size={30} color="transparent" />
         </View>
