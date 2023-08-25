@@ -11,7 +11,6 @@ export default function HomeScreen() {
       <NewGame />
       <Categories />
     </ScrollView>
-
   );
 }
 

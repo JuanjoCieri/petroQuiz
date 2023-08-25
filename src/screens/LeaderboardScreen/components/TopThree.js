@@ -6,64 +6,85 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import { useEffect } from "react";
-import { TouchableWithoutFeedback } from "react-native-web";
 
 export default function TopThree() {
-  const animation = useSharedValue({ height: 200 });
+  const animationTwo = useSharedValue({ height: 0 });
+  const animationOne = useSharedValue({ height: 0 });
+  const animationThree = useSharedValue({ height: 0 });
 
-  const animationStyle = useAnimatedStyle(() => {
+  const animationStyleTwo = useAnimatedStyle(() => {
     return {
-      height: withTiming(animation.value.height, {
-        duration: 600,
+      height: withTiming(animationTwo.value.height, {
+        duration: 1000,
+      }),
+    };
+  });
+  const animationStyleOne = useAnimatedStyle(() => {
+    return {
+      height: withTiming(animationOne.value.height, {
+        duration: 800,
+      }),
+    };
+  });
+  const animationStyleThree = useAnimatedStyle(() => {
+    return {
+      height: withTiming(animationThree.value.height, {
+        duration: 1200,
       }),
     };
   });
 
-  const doAnimation = () => {
-    animation.value = { height: "80%" };
+  const doAnimationTwo = () => {
+    animationTwo.value = { height: 530 };
   };
+  const doAnimationOne = () => {
+    animationOne.value = { height: 580 };
+  };
+  const doAnimationThree = () => {
+    animationThree.value = { height: 500 };
+  };
+
+  useEffect(() => {
+    doAnimationTwo();
+    doAnimationOne();
+    doAnimationThree();
+  }, []);
+
   const firstUsers = users.slice(0, 3);
   return (
     <View style={styles.container}>
       <View style={styles.topContainer}>
         <Image
-          source={{ uri: firstUsers[0].userImage }}
+          source={{ uri: firstUsers[1].userImage }}
           style={styles.userImage}
         />
-        <Animated.View style={[styles.topTwo, animationStyle]}>
+        <Animated.View style={[styles.topTwo, animationStyleTwo]}>
           <Text style={styles.topNumberText} className="text-xl">
             2
           </Text>
         </Animated.View>
       </View>
       <View style={styles.topContainer}>
-      <TouchableWithoutFeedback
-        onPress={() => {
-          animation.value = { height: 800 };
-        }}
-      >
-        <Text>HOla</Text>
-      </TouchableWithoutFeedback>
         <Image
-          source={{ uri: firstUsers[1].userImage }}
+          source={{ uri: firstUsers[0].userImage }}
           style={styles.userImage}
         />
-        <View style={styles.topOne}>
+        <Animated.View style={[styles.topOne, animationStyleOne]}>
           <Text style={styles.topNumberText} className="text-xl">
             1
           </Text>
-        </View>
+        </Animated.View>
       </View>
       <View style={styles.topContainer}>
         <Image
           source={{ uri: firstUsers[2].userImage }}
           style={styles.userImage}
         />
-        <View style={styles.topThree}>
+        <Animated.View style={[styles.topThree, animationStyleThree]}>
           <Text style={styles.topNumberText} className="text-xl">
             3
           </Text>
-        </View>
+        </Animated.View>
       </View>
     </View>
   );
