@@ -8,6 +8,7 @@ import Results from "./components/Results";
 
 export default function PlayScreen() {
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategoryView, setSelectedCategoryView] = useState(null);
   const [randomQuestion, setRandomQuestion] = useState(null);
   const [questionsAnswered, setQuestionsAnswered] = useState(0);
   const [score, setScore] = useState(0);
@@ -74,6 +75,7 @@ export default function PlayScreen() {
           <SpinWheel
             onOptionSelected={setSelectedCategory}
             questionsAnswered={questionsAnswered}
+            score={score}
           />
         )
       ) : (

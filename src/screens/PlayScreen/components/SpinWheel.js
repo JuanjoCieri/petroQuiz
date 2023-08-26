@@ -7,9 +7,10 @@ import {
   Easing,
   Image,
   ImageBackground,
+  StyleSheet,
 } from "react-native";
 
-const SpinWheel = ({ onOptionSelected, questionsAnswered }) => {
+const SpinWheel = ({ onOptionSelected, questionsAnswered, score }) => {
   const wheelRef = useRef(new Animated.Value(0));
   const [spinning, setSpinning] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
@@ -62,11 +63,10 @@ const SpinWheel = ({ onOptionSelected, questionsAnswered }) => {
     outputRange: ["1deg", `${rotationAngle}deg`], // Rotate to the calculated angle
   });
   return (
-    <View style={{ alignItems: "center", flex: 1 }}>
-      <View style={{ marginVertical: 70 }}>
+    <View style={styles.container}>
+      <View>
         <ImageBackground
           style={{
-            position: "relative",
             width: 330,
             height: 330,
             justifyContent: "center",
@@ -105,28 +105,50 @@ const SpinWheel = ({ onOptionSelected, questionsAnswered }) => {
         </ImageBackground>
       </View>
       <View style={{}}>
-        {selectedOption && (
-          <Text style={{ marginTop: 10, fontSize: 18, color: "red" }}>
-            Selected Option: {selectedOption}
-          </Text>
-        )}
         <TouchableOpacity
           onPress={onSpin}
           style={{
-            marginTop: 75,
-            padding: 10,
             justifyContent: "center",
             alignItems: "center",
           }}
         >
           <Image source={require("../../../../assets/images/Ellip.png")} />
         </TouchableOpacity>
-        <View>
-          <Text style={{ position: "absolute" }}>Ronda {questionsAnswered + 1} / 3</Text>
-        </View>
+      </View>
+      <View style={styles.round}>
+        <Text style={styles.roundText}>Ronda {questionsAnswered + 1} / 3</Text>
+        <Text style={styles.roundText}>|</Text>
+        <Text style={styles.roundText}>Puntaje: {score}</Text>
       </View>
     </View>
   );
 };
 
 export default SpinWheel;
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "#F9CA86",
+    width: "100%",
+    height: "100%",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 40
+  },
+  round: {
+    position: "absolute",
+    bottom: 0,
+    height: "10%",
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    backgroundColor: "#A8593E",
+  },
+  roundText: {
+    color: "white",
+    fontWeight: "600",
+    fontSize: 15,
+  },
+});

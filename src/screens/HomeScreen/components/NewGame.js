@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#897B68",
     height: 97,
-    borderRadius: 10,
+    borderRadius: 20,
     flexDirection: "row",
   },
   playText: {
