@@ -16,7 +16,7 @@ export default function Categories() {
           data={categories}
           ItemSeparatorComponent={() => <Text> </Text>}
           renderItem={({ item: category }) => (
-            <CategoriesCard categoryName={category.categoryName} />
+            <CategoriesCard categoryName={category.categoryName} categoryIcon={category.categoryImage}/>
           )}
         />
       </ScrollView>

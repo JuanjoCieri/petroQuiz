@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { BlurView } from "expo-blur";
 
 export default function Play({
   category,
@@ -11,6 +12,8 @@ export default function Play({
 }) {
   const [counter, setCounter] = useState(30);
   const [intervalId, setIntervalId] = useState(null);
+  const [isCorrectView, setIsCorrectView] = useState(null);
+  const [isCorrect, setIsCorrect] = useState(null)
 
   useEffect(() => {
     if (counter === 0) {
@@ -42,62 +45,74 @@ export default function Play({
     setSelectedOption(option);
 
     const isCorrect = option === correctAnswer;
-    handleOptionSelected(category, isCorrect);
+    setIsCorrect(isCorrect)
+    setIsCorrectView(true);
+    setTimeout(() => {
+      handleOptionSelected(category, isCorrect);
+      setIsCorrectView(false);
+    }, 1500);
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <StatusBar />
-        <View className="pt-7" style={styles.headerData}>
-          <View style={styles.left}></View>
-          <View style={styles.center}>
-            <Text style={styles.categoryText}>{category}</Text>
-          </View>
-          <View style={styles.right}>
-            <Text style={styles.timerText}>{counter}"</Text>
+    <>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <StatusBar />
+          <View className="pt-7" style={styles.headerData}>
+            <View style={styles.left}></View>
+            <View style={styles.center}>
+              <Text style={styles.categoryText}>{category}</Text>
+            </View>
+            <View style={styles.right}>
+              <Text style={styles.timerText}>{counter}"</Text>
+            </View>
           </View>
         </View>
-      </View>
-      <View style={styles.main}>
-        <View style={styles.questionBox}>
-          <Text style={styles.questionText}>{question}</Text>
-        </View>
-        {allOptions.map((option, index) => (
-          <TouchableOpacity
-            key={index}
-            onPress={() => handleOptionClick(option)}
-            style={[
-              styles.answerBox,
-              {
-                backgroundColor:
-                  option === selectedOption
-                    ? option === correctAnswer
-                      ? "green"
-                      : "red"
-                    : "white",
-              },
-            ]}
-          >
-            <View>
-              <Text
-                style={{
-                  color:
+        <View style={styles.main}>
+          <View style={styles.questionBox}>
+            {isCorrectView && (
+              <BlurView style={styles.isCorrectView}>
+                <Text style={{color: isCorrect ? "green" : "red", fontSize: 20, fontWeight: "600"}}>{isCorrect ? "¡Correcto!" : "¡Incorrecto!"}</Text>
+              </BlurView>
+            )}
+            <Text style={styles.questionText}>{question}</Text>
+          </View>
+          {allOptions.map((option, index) => (
+            <TouchableOpacity
+              key={index}
+              onPress={() => handleOptionClick(option)}
+              style={[
+                styles.answerBox,
+                {
+                  backgroundColor:
                     option === selectedOption
                       ? option === correctAnswer
-                        ? "white"
-                        : "black"
-                      : "black",
-                  textAlign: "center",
-                }}
-              >
-                {option}
-              </Text>
-            </View>
-          </TouchableOpacity>
-        ))}
+                        ? "green"
+                        : "red"
+                      : "white",
+                },
+              ]}
+            >
+              <View>
+                <Text
+                  style={{
+                    color:
+                      option === selectedOption
+                        ? option === correctAnswer
+                          ? "white"
+                          : "black"
+                        : "black",
+                    textAlign: "center",
+                  }}
+                >
+                  {option}
+                </Text>
+              </View>
+            </TouchableOpacity>
+          ))}
+        </View>
       </View>
-    </View>
+    </>
   );
 }
 
@@ -178,4 +193,12 @@ const styles = StyleSheet.create({
     fontWeight: "semibold",
     color: "white",
   },
+  isCorrectView: {
+    width: "100%",
+    height: "100%",
+    justifyContent: "center",
+    position: "absolute",
+    alignItems: "center",
+    zIndex: 50
+  }
 });

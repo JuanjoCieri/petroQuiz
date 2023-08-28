@@ -1,26 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet } from "react-native";
 import SpinWheel from "./components/SpinWheel";
 import Play from "./components/Play";
-import IsCorrectModal from "./components/IsCorrectModal";
 import questions from "../../mocks/questions";
 import Results from "./components/Results";
 
 export default function PlayScreen() {
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const [selectedCategoryView, setSelectedCategoryView] = useState(null);
   const [randomQuestion, setRandomQuestion] = useState(null);
   const [questionsAnswered, setQuestionsAnswered] = useState(0);
   const [score, setScore] = useState(0);
-  const [isCorrectModalVisible, setIsCorrectModalVisible] = useState(false);
   const [isLastQuestion, setIsLastQuestion] = useState(false);
 
   const handleOptionSelected = (option, isCorrect) => {
-    setTimeout(() => {
-      setSelectedCategory(null);
-      setRandomQuestion(null);
-      setIsCorrectModalVisible(true);
-    }, 1500);
+    setSelectedCategory(null);
+    setRandomQuestion(null);
+    setQuestionsAnswered(questionsAnswered + 1);
 
     if (isCorrect) {
       setScore(score + 1);
@@ -30,17 +25,6 @@ export default function PlayScreen() {
 
     if (questionsAnswered + 1 === 10) {
       setIsLastQuestion(true);
-    }
-  };
-
-  const closeModal = () => {
-    setIsCorrectModalVisible(false);
-
-    if (!isLastQuestion) {
-      setQuestionsAnswered(questionsAnswered + 1);
-
-      setSelectedCategory(null);
-      setRandomQuestion(null);
     }
   };
 
@@ -81,12 +65,6 @@ export default function PlayScreen() {
       ) : (
         <Results score={score} />
       )}
-
-      <IsCorrectModal
-        isVisible={isCorrectModalVisible}
-        isCorrect={score > 0}
-        onClose={closeModal}
-      />
     </View>
   );
 }

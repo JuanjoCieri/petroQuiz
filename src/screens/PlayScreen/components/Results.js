@@ -1,27 +1,42 @@
 import { Text, View, StyleSheet } from "react-native";
 import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-
+import ConfettiCannon from "react-native-confetti-cannon";
 
 export default function Results({ score }) {
-    const navigation = useNavigation();
+  const navigation = useNavigation();
 
   const handleBackHome = () => {
     navigation.navigate("Home");
   };
 
   return (
-    <View style={styles.container}>
-      <View>
-        <Text>Has respondido 3 preguntas.</Text>
+    <>
+      <View style={styles.container}>
+        {score >= 0 ? (
+          <ConfettiCannon
+            count={100}
+            origin={{ x: -10, y: 0 }}
+            autoStart={true}
+          />
+        ) : (
+          false
+        )}
+        <View style={styles.banner}>
+          <Text style={{ color: "white", fontSize: 25, fontWeight: "600" }}>
+            PetroQuiz
+          </Text>
+        </View>
+        <View>
+          <Text style={styles.text}>
+            {score >= 0 ? "Sumas" : "Restas"} {score} puntos
+          </Text>
+        </View>
+        <TouchableOpacity style={styles.backButton} onPress={handleBackHome}>
+          <Text style={styles.buttonText}>Volver</Text>
+        </TouchableOpacity>
       </View>
-      <View>
-        <Text>{score >= 0 ? "Sumas" : "Restas"} {score} puntos</Text>
-      </View>
-      <TouchableOpacity style={styles.backButton} onPress={handleBackHome}>
-        <Text style={styles.buttonText}>Volver</Text>
-      </TouchableOpacity>
-    </View>
+    </>
   );
 }
 
@@ -41,6 +56,19 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   buttonText: {
-    color: "white"
+    color: "white",
+  },
+  text: {
+    fontSize: 30,
+    color: "black",
+    fontWeight: "600",
+  },
+  banner: {
+    width: "80%",
+    height: "15%",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 20,
+    backgroundColor: "#371B1B",
   },
 });

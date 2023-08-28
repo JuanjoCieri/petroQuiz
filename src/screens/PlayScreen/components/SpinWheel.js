@@ -1,3 +1,4 @@
+import { BlurView } from "expo-blur";
 import React, { useRef, useState } from "react";
 import {
   View,
@@ -10,20 +11,23 @@ import {
   StyleSheet,
 } from "react-native";
 
-const SpinWheel = ({ onOptionSelected, questionsAnswered, score }) => {
+const SpinWheel = ({
+  onOptionSelected,
+  onOptionSelectedView,
+  questionsAnswered,
+  score,
+}) => {
   const wheelRef = useRef(new Animated.Value(0));
   const [spinning, setSpinning] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
   const [selectedOptionIndex, setSelectedOptionIndex] = useState(null);
+  const [selectedCategoryView, setSelectedCategoryView] = useState(null);
 
   // Define your wheel data (sections, colors, labels, etc.)
   const wheelData = [
     { label: "history", color: "red" },
     { label: "society_and_culture", color: "blue" },
     { label: "arts_and_literature", color: "green" },
-    { label: "music", color: "yellow" },
-    { label: "food_and_drink", color: "grey" },
-    { label: "science", color: "green" },
   ];
 
   const onSpin = () => {
@@ -44,8 +48,12 @@ const SpinWheel = ({ onOptionSelected, questionsAnswered, score }) => {
         const selectedSection = Math.floor(
           (finalAngle % 360) / (360 / wheelData.length)
         );
+        setSelectedCategoryView(true);
         setSelectedOption(wheelData[selectedSection].label);
-        onOptionSelected(wheelData[selectedSection].label);
+        setTimeout(() => {
+          onOptionSelected(wheelData[selectedSection].label);
+          setSelectedCategoryView(false);
+        }, 2000);
         setSelectedOptionIndex(null); // Store the selected option index
         setSpinning(false);
       });
@@ -55,72 +63,81 @@ const SpinWheel = ({ onOptionSelected, questionsAnswered, score }) => {
   // Calculate the rotation angle based on the selected option index
   const rotationAngle =
     selectedOptionIndex == null
-      ? 6 * 6 + (360 / wheelData.length) * selectedOptionIndex
+      ? 3 * 3 + (360 / wheelData.length) * selectedOptionIndex
       : 0;
 
   const wheelRotation = wheelRef.current.interpolate({
-    inputRange: [0, 6 * 6], // Adjust this to multiple turns (e.g., 6 turns in this case)
+    inputRange: [0, 3 * 3], // Adjust this to multiple turns (e.g., 6 turns in this case)
     outputRange: ["1deg", `${rotationAngle}deg`], // Rotate to the calculated angle
   });
   return (
-    <View style={styles.container}>
-      <View>
-        <ImageBackground
-          style={{
-            width: 330,
-            height: 330,
-            justifyContent: "center",
-            alignItems: "center",
-            zIndex: 1000,
-          }}
-          source={require("../../../../assets/images/spinBackground.png")}
-        >
-          <Image
+    <>
+      {selectedCategoryView && (
+          <BlurView intensity={60} style={styles.selectedCategoryView}>
+            <Text style={styles.selectedCategoryViewText}>{selectedOption}</Text>
+          </BlurView>
+      )}
+      <View style={styles.container}>
+        <View>
+          <ImageBackground
             style={{
-              position: "absolute",
-              top: 14,
-              right: "48%",
+              width: 330,
+              height: 330,
               justifyContent: "center",
               alignItems: "center",
+              zIndex: 1000,
             }}
-            source={require("../../../../assets/images/spinArrow.png")}
-          />
-          <Animated.View
-            style={{
-              width: 300,
-              height: 300,
-              justifyContent: "center",
-              alignItems: "center",
-              borderRadius: 150,
-              zIndex: -100,
-              backgroundColor: "#fff",
-              transform: [{ rotate: wheelRotation }],
-            }}
+            source={require("../../../../assets/images/Ellips.png")}
           >
             <Image
-              style={{ width: 310, height: 310, zIndex: 100 }}
-              source={require("../../../../assets/images/Group.png")}
+              style={{
+                position: "absolute",
+                top: 14,
+                right: "48%",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+              source={require("../../../../assets/images/spinArrow.png")}
             />
-          </Animated.View>
-        </ImageBackground>
+            <Animated.View
+              style={{
+                width: 300,
+                height: 300,
+                justifyContent: "center",
+                alignItems: "center",
+                borderRadius: 150,
+                zIndex: -100,
+                backgroundColor: "#fff",
+                transform: [{ rotate: wheelRotation }],
+              }}
+            >
+              <Image
+                style={{ width: 310, height: 310, zIndex: 100 }}
+                source={require("../../../../assets/images/Group7.png")}
+              />
+            </Animated.View>
+          </ImageBackground>
+        </View>
+        <View style={{}}>
+          <TouchableOpacity
+            onPress={onSpin}
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Image style={{width: 30}} source={require("../../../../assets/images/spinButton.png")} />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.round}>
+          <Text style={styles.roundText}>
+            Ronda {questionsAnswered + 1} / 3
+          </Text>
+          <Text style={styles.roundText}>|</Text>
+          <Text style={styles.roundText}>Puntaje: {score}</Text>
+        </View>
       </View>
-      <View style={{}}>
-        <TouchableOpacity
-          onPress={onSpin}
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Image source={require("../../../../assets/images/Ellip.png")} />
-        </TouchableOpacity>
-      </View>
-      <View style={styles.round}>
-        <Text style={styles.roundText}>Ronda {questionsAnswered + 1} / 3</Text>
-        <Text style={styles.roundText}>|</Text>
-        <Text style={styles.roundText}>Puntaje: {score}</Text>
-      </View>
-    </View>
+    </>
   );
 };
 
@@ -134,7 +151,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    gap: 40
+    gap: 40,
   },
   round: {
     position: "absolute",
@@ -151,4 +168,18 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     fontSize: 15,
   },
+  selectedCategoryView: {
+    width: "100%",
+    height: "100%",
+    justifyContent: "space-around",
+    alignItems: "center",
+    position: "absolute",
+    zIndex: 50,
+  },
+  selectedCategoryViewText: {
+    fontSize: 40,
+    color: "white",
+    fontWeight: "700",
+    paddingHorizontal: 20
+  }
 });

@@ -1,20 +1,23 @@
-import presionIcon from "../../assets/categoryIcons/presionIcon.png"
+import equipamientoIcon from "../../assets/categoryIcons/equipamiento.png";
+import metodosIcon from "../../assets/categoryIcons/metodos.png";
+import maniobraIcon from "../../assets/categoryIcons/maniobra.png";
 
 const categories = [
-    {
-        categoryId: 1,
-        categoryName: "Slot 1",
-        categoryImage: presionIcon
-    },
-    {
-        categoryId: 2,
-        categoryName: "Slot 2",
-        categoryImage: presionIcon
-    },{
-        categoryId: 3,
-        categoryName: "Slot 3",
-        categoryImage: presionIcon
-    },
-]
+  {
+    categoryId: 1,
+    categoryName: "Equipamiento",
+    categoryImage: equipamientoIcon,
+  },
+  {
+    categoryId: 2,
+    categoryName: "Maniobra",
+    categoryImage: maniobraIcon,
+  },
+  {
+    categoryId: 3,
+    categoryName: "Metodos",
+    categoryImage: metodosIcon,
+  },
+];
 
-export default categories
+export default categories;
