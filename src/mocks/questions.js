@@ -166,3 +166,14 @@ const questions = [
   },
 ];
 export default questions;
+
+const a = {
+  categoria_id: "1",
+  pregunta: "¿Esta es una pregunta de prueba equipamiento 1?",
+  respuesta_correcta: "Respuesta 1",
+  respuestas_incorrectas: [
+    "Respuesta 2",
+    "Respuesta 3",
+    "Respuesta 4"
+  ]
+}

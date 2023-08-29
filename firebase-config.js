@@ -19,3 +19,6 @@ export const firebaseConfig = {
 // Initialize Firebase
 // const app = initializeApp(firebaseConfig);
 // const analytics = getAnalytics(app);
+
+// Android: 611019823270-jvic2hkktr81eprhfrg4u08ti57d69ov.apps.googleusercontent.com
+// IOS: 611019823270-2rahov9v0p3fqufrebtv5io6ekdegn2m.apps.googleusercontent.com
