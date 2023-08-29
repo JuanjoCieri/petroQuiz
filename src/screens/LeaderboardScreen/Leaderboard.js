@@ -1,33 +1,45 @@
 import React from "react";
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  ImageBackground,
+} from "react-native";
 import RankingList from "./components/RankingList";
 import { StatusBar } from "expo-status-bar";
-import { useNavigation } from "@react-navigation/native"; // Import useNavigation
+import { useNavigation } from "@react-navigation/native";
 import { ChevronLeftIcon } from "react-native-heroicons/solid";
 import TopThree from "./components/TopThree";
+import { BlurView } from "expo-blur";
 
 export default function Leaderboard() {
-  const navigation = useNavigation(); // Get the navigation object
+  const navigation = useNavigation();
 
   const handleBackToHome = () => {
-    navigation.goBack(); // Go back to the previous screen (Home)
+    navigation.goBack();
   };
 
   return (
-    <View style={styles.container}>
-      <View className="py-5">
-        <StatusBar />
-        <View style={styles.header}>
-          <TouchableOpacity onPress={handleBackToHome}>
-            <ChevronLeftIcon size={30} color="black" />
-          </TouchableOpacity>
-          <Text className="text-3xl">Ranking</Text>
-          <ChevronLeftIcon size={30} color="transparent" />
+    <ImageBackground
+      source={require("../../../assets/profileBackground.png")}
+      style={styles.container}
+    >
+      <BlurView intensity={15} style={styles.container}>
+        <View className="py-5">
+          <StatusBar />
+          <View style={styles.header}>
+            <TouchableOpacity onPress={handleBackToHome}>
+              <ChevronLeftIcon size={30} color="black" />
+            </TouchableOpacity>
+            <Text className="text-3xl">Ranking</Text>
+            <ChevronLeftIcon size={30} color="transparent" />
+          </View>
         </View>
-      </View>
-      <TopThree />
-      <RankingList />
-    </View>
+        <TopThree />
+        <RankingList />
+      </BlurView>
+    </ImageBackground>
   );
 }
 
@@ -39,7 +51,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   container: {
-    backgroundColor: "#F9CA86",
     width: "100%",
     height: "100%",
   },

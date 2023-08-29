@@ -29,7 +29,7 @@ export default function Results({ score }) {
         </View>
         <View>
           <Text style={styles.text}>
-            {score >= 0 ? "Sumas" : "Restas"} {score} puntos
+            {score >= 0 ? "Sumas" : "Restas"} {score} {score === 1 ? "punto" : "puntos"}
           </Text>
         </View>
         <TouchableOpacity style={styles.backButton} onPress={handleBackHome}>

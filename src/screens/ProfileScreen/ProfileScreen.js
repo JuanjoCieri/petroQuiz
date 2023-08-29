@@ -1,28 +1,34 @@
 import { StatusBar } from "expo-status-bar";
-import {View, Text, StyleSheet} from "react-native"
+import { View, Text, StyleSheet, ImageBackground } from "react-native";
 import SettingsList from "./components/SettingsList";
 import UserData from "./components/UserData";
+import { BlurView } from "expo-blur";
 
 export default function ProfileScreen() {
   return (
-    <View style={styles.container}>
-      <View className="py-5">
-        <StatusBar />
-        <View style={styles.header}>
-          <Text className="text-3xl">Perfil</Text>
+    <ImageBackground
+      source={require("../../../assets/profileBackground.png")}
+      style={styles.container}
+    >
+        <BlurView intensity={15} style={styles.container}>
+
+        <View className="py-5">
+          <StatusBar />
+          <View style={styles.header}>
+            <Text style={styles.text}>Perfil</Text>
+          </View>
         </View>
-      </View>
-      <UserData />
-      <SettingsList />
-    </View>
+        <UserData />
+        <SettingsList />
+        </BlurView>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#F9CA86",
-    width: "100%",
-    height: "100%",
+    flex: 1,
+    backgroundColor: "transparent", // Make the container transparent to show the background image
   },
   header: {
     padding: 20,
@@ -31,6 +37,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   text: {
-    fontSize: 50,
+    fontSize: 30,
+    color: "black",
+  },
+  backgroundImage: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

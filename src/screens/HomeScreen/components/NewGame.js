@@ -17,7 +17,7 @@ export default function NewGame() {
       <View style={styles.right}>
         <Image
           style={styles.image}
-          source={require("../../../../assets/homePlay/petroleumBase2.png")}
+          source={require("../../../../assets/homePlay/petroleumBase22.png")}
         />
       </View>
     </TouchableOpacity>

@@ -9,7 +9,7 @@ export default function UserData() {
         <Text style={styles.userName}>{users[0].userName}</Text>
       </View>
       <View>
-        <Text>{users[0].userPoints} puntos</Text>
+        <Text style={styles.userPoints}>{users[0].userPoints} puntos</Text>
       </View>
     </View>
   );
@@ -34,6 +34,12 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   userName: {
-    fontSize: 25
+    fontSize: 30,
+    color: "black",
+    fontWeight: "600"
+  },
+  userPoints: {
+    color: "#371B1B",
+    fontSize: 15
   }
 });

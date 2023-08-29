@@ -126,7 +126,7 @@ const SpinWheel = ({
               alignItems: "center",
             }}
           >
-            <Image style={{width: 30}} source={require("../../../../assets/images/spinButton.png")} />
+            <Image style={{width: 150, height: 150}} source={require("../../../../assets/images/spinButtonn.png")} />
           </TouchableOpacity>
         </View>
         <View style={styles.round}>
