@@ -23,6 +23,27 @@ export function getLoggedUser() {
   };
 }
 
+export function getLeaderboardRank() {
+  return async (dispatch) => {
+    const headers = {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    };
+    try {
+      const response = await axios.get(
+        `http://192.168.2.178:5000/users/topPlayers`,
+        { headers: headers, withCredentials: true }
+      );
+      dispatch({
+        type: actions.GET_LEADERBOARD_RANK,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
 export function getRandomQuestion(id) {
   return async (dispatch) => {
     const headers = {

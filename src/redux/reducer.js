@@ -3,6 +3,7 @@ import * as actions from "./Actions/actionsTypes.js";
 const initialState = {
   loggedUser: [],
   randomQuestion: [],
+  rankingList: []
 };
 
 export default function rootReducer(state = initialState, payload) {
@@ -16,6 +17,11 @@ export default function rootReducer(state = initialState, payload) {
       return {
         ...state,
         randomQuestion: payload.payload,
+      };
+      case actions.GET_LEADERBOARD_RANK:
+      return {
+        ...state,
+        rankingList: payload.payload,
       };
     default:
       return state;

@@ -1,12 +1,19 @@
 import { View, StyleSheet, Text, ScrollView, FlatList } from "react-native";
-import users from "../../../mocks/users";
 import UserCard from "./UserCard";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getLeaderboardRank } from "../../../redux/Actions";
 
 export default function RankingList() {
+  const rankingList = useSelector((state) => state.rankingList)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getLeaderboardRank())
+  }, [rankingList])
   return (
     <ScrollView style={styles.container}>
       <FlatList
-        data={users}
+        data={rankingList}
         ItemSeparatorComponent={() => <Text> </Text>}
         renderItem={({ item: user }) => (
           <UserCard
