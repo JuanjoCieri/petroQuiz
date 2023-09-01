@@ -1,15 +1,18 @@
 import { View, StyleSheet, Image, Text } from "react-native";
 import users from "../../../mocks/users";
+import { useSelector } from "react-redux";
 
 export default function UserData() {
+  const loggedUser = useSelector((state) => state.loggedUser[0])
+  console.log(loggedUser)
   return (
     <View style={styles.container}>
       <View style={styles.userData}>
-        <Image source={{ uri: users[1].userImage }} style={styles.userImage} />
-        <Text style={styles.userName}>{users[0].userName}</Text>
+        <Image source={{ uri: loggedUser?.imagen }} style={styles.userImage} />
+        <Text style={styles.userName}>{loggedUser?.nombre}</Text>
       </View>
       <View>
-        <Text style={styles.userPoints}>{users[0].userPoints} puntos</Text>
+        <Text style={styles.userPoints}>{loggedUser?.puntos} puntos</Text>
       </View>
     </View>
   );

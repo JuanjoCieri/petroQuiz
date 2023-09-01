@@ -6,8 +6,10 @@ import Animated, {
   withTiming,
 } from "react-native-reanimated";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 export default function TopThree() {
+  const rankingList = useSelector((state) => state.rankingList)
   const animationTwo = useSharedValue({ height: 0 });
   const animationOne = useSharedValue({ height: 0 });
   const animationThree = useSharedValue({ height: 0 });
@@ -55,7 +57,7 @@ export default function TopThree() {
     <View style={styles.container}>
       <View style={styles.topContainer}>
         <Image
-          source={{ uri: firstUsers[1].userImage }}
+          source={{ uri: rankingList[1]?.imagen }}
           style={styles.userImage}
         />
         <Animated.View style={[styles.topTwo, animationStyleTwo]}>
@@ -66,7 +68,7 @@ export default function TopThree() {
       </View>
       <View style={styles.topContainer}>
         <Image
-          source={{ uri: firstUsers[0].userImage }}
+          source={{ uri: rankingList[0]?.imagen }}
           style={styles.userImage}
         />
         <Animated.View style={[styles.topOne, animationStyleOne]}>
@@ -77,7 +79,7 @@ export default function TopThree() {
       </View>
       <View style={styles.topContainer}>
         <Image
-          source={{ uri: firstUsers[2].userImage }}
+          source={{ uri: rankingList[2]?.imagen }}
           style={styles.userImage}
         />
         <Animated.View style={[styles.topThree, animationStyleThree]}>

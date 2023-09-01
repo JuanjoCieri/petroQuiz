@@ -9,7 +9,7 @@ export default function RankingList() {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getLeaderboardRank())
-  }, [rankingList])
+  }, [])
   return (
     <ScrollView style={styles.container}>
       <FlatList
@@ -18,9 +18,9 @@ export default function RankingList() {
         renderItem={({ item: user }) => (
           <UserCard
             userPosition={user.userId}
-            userName={user.userName}
-            userPoints={user.userPoints}
-            userImage={user.userImage}
+            userName={user.nombre}
+            userPoints={user.puntos}
+            userImage={user.imagen}
           />
         )}
       />

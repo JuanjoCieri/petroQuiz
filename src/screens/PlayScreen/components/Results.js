@@ -2,13 +2,27 @@ import { Text, View, StyleSheet } from "react-native";
 import { TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import ConfettiCannon from "react-native-confetti-cannon";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { postGamePoints } from "../../../redux/Actions";
 
 export default function Results({ score }) {
+  const loggedUser = useSelector((state) => state.loggedUser[0])
   const navigation = useNavigation();
 
   const handleBackHome = () => {
     navigation.navigate("Home");
   };
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    const payload = {
+      userId: loggedUser.id,
+      points: score
+    }
+    dispatch(postGamePoints(payload))
+  }, [])
 
   return (
     <>

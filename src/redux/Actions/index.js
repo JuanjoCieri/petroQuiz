@@ -25,14 +25,9 @@ export function getLoggedUser() {
 
 export function getLeaderboardRank() {
   return async (dispatch) => {
-    const headers = {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    };
     try {
       const response = await axios.get(
-        `http://192.168.2.178:5000/users/topPlayers`,
-        { headers: headers, withCredentials: true }
+        `http://localhost:3000/users/topPlayers`
       );
       dispatch({
         type: actions.GET_LEADERBOARD_RANK,
@@ -57,6 +52,22 @@ export function getRandomQuestion(id) {
       );
       dispatch({
         type: actions.GET_LOGGED_USER,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function postGamePoints(payload) {
+  return async (dispatch) => {
+    try {
+      const response = await axios.patch(
+        `http://localhost:3000/users/savePoints`, payload
+      );
+      dispatch({
+        type: actions.POST_GAME_POINTS,
         payload: response.data,
       });
     } catch (error) {
