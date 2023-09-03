@@ -1,5 +1,4 @@
 import { Text, View, StyleSheet, Image } from "react-native";
-import users from "../../../mocks/users";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -10,49 +9,48 @@ import { useSelector } from "react-redux";
 
 export default function TopThree() {
   const rankingList = useSelector((state) => state.rankingList)
-  const animationTwo = useSharedValue({ height: 0 });
-  const animationOne = useSharedValue({ height: 0 });
-  const animationThree = useSharedValue({ height: 0 });
+  // const animationTwo = useSharedValue({ height: 0 });
+  // const animationOne = useSharedValue({ height: 0 });
+  // const animationThree = useSharedValue({ height: 0 });
 
-  const animationStyleTwo = useAnimatedStyle(() => {
-    return {
-      height: withTiming(animationTwo.value.height, {
-        duration: 1000,
-      }),
-    };
-  });
-  const animationStyleOne = useAnimatedStyle(() => {
-    return {
-      height: withTiming(animationOne.value.height, {
-        duration: 800,
-      }),
-    };
-  });
-  const animationStyleThree = useAnimatedStyle(() => {
-    return {
-      height: withTiming(animationThree.value.height, {
-        duration: 1200,
-      }),
-    };
-  });
+  // const animationStyleTwo = useAnimatedStyle(() => {
+  //   return {
+  //     height: withTiming(animationTwo.value.height, {
+  //       duration: 1000,
+  //     }),
+  //   };
+  // });
+  // const animationStyleOne = useAnimatedStyle(() => {
+  //   return {
+  //     height: withTiming(animationOne.value.height, {
+  //       duration: 800,
+  //     }),
+  //   };
+  // });
+  // const animationStyleThree = useAnimatedStyle(() => {
+  //   return {
+  //     height: withTiming(animationThree.value.height, {
+  //       duration: 1200,
+  //     }),
+  //   };
+  // });
 
-  const doAnimationTwo = () => {
-    animationTwo.value = { height: 530 };
-  };
-  const doAnimationOne = () => {
-    animationOne.value = { height: 580 };
-  };
-  const doAnimationThree = () => {
-    animationThree.value = { height: 500 };
-  };
+  // const doAnimationTwo = () => {
+  //   animationTwo.value = { height: 530 };
+  // };
+  // const doAnimationOne = () => {
+  //   animationOne.value = { height: 580 };
+  // };
+  // const doAnimationThree = () => {
+  //   animationThree.value = { height: 500 };
+  // };
 
-  useEffect(() => {
-    doAnimationTwo();
-    doAnimationOne();
-    doAnimationThree();
-  }, []);
+  // useEffect(() => {
+  //   doAnimationTwo();
+  //   doAnimationOne();
+  //   doAnimationThree();
+  // }, []);
 
-  const firstUsers = users.slice(0, 3);
   return (
     <View style={styles.container}>
       <View style={styles.topContainer}>
@@ -60,33 +58,33 @@ export default function TopThree() {
           source={{ uri: rankingList[1]?.imagen }}
           style={styles.userImage}
         />
-        <Animated.View style={[styles.topTwo, animationStyleTwo]}>
+        <View style={styles.topTwo}>
           <Text style={styles.topNumberText} className="text-xl">
             2
           </Text>
-        </Animated.View>
+        </View>
       </View>
       <View style={styles.topContainer}>
         <Image
           source={{ uri: rankingList[0]?.imagen }}
           style={styles.userImage}
         />
-        <Animated.View style={[styles.topOne, animationStyleOne]}>
+        <View style={styles.topOne}>
           <Text style={styles.topNumberText} className="text-xl">
             1
           </Text>
-        </Animated.View>
+        </View>
       </View>
       <View style={styles.topContainer}>
         <Image
           source={{ uri: rankingList[2]?.imagen }}
           style={styles.userImage}
         />
-        <Animated.View style={[styles.topThree, animationStyleThree]}>
+        <View style={styles.topThree}>
           <Text style={styles.topNumberText} className="text-xl">
             3
           </Text>
-        </Animated.View>
+        </View>
       </View>
     </View>
   );

@@ -5,19 +5,21 @@ import { useEffect } from "react";
 import { getLeaderboardRank } from "../../../redux/Actions";
 
 export default function RankingList() {
-  const rankingList = useSelector((state) => state.rankingList)
-  const dispatch = useDispatch()
+  const rankingList = useSelector((state) => state.rankingList);
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(getLeaderboardRank())
-  }, [])
+    dispatch(getLeaderboardRank());
+  }, []);
+
   return (
     <ScrollView style={styles.container}>
       <FlatList
         data={rankingList}
         ItemSeparatorComponent={() => <Text> </Text>}
-        renderItem={({ item: user }) => (
+        renderItem={({ item: user, index }) => (
           <UserCard
-            userPosition={user.userId}
+            userPosition={index + 1} 
             userName={user.nombre}
             userPoints={user.puntos}
             userImage={user.imagen}
@@ -27,6 +29,7 @@ export default function RankingList() {
     </ScrollView>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {

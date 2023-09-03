@@ -18,6 +18,11 @@ const categories = [
     categoryName: "Metodos",
     categoryImage: metodosIcon,
   },
+  {
+    categoryId: 3,
+    categoryName: "Metodos",
+    categoryImage: metodosIcon,
+  },
 ];
 
 export default categories;

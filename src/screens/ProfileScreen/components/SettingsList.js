@@ -34,8 +34,9 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 0,
     paddingHorizontal: 25,
-    paddingVertical: 30,
-    gap: 20,
+    paddingVertical: 10,
+    // gap: 20,
+    justifyContent: "space-around",
   },
   button: {
     flexDirection: "row",

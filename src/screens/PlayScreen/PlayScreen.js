@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 import SpinWheel from "./components/SpinWheel";
 import Play from "./components/Play";
-import questions from "../../mocks/questions";
 import Results from "./components/Results";
+import { useDispatch, useSelector } from "react-redux";
+import { getRandomQuestion } from "../../redux/Actions";
 
 export default function PlayScreen() {
   const [selectedCategory, setSelectedCategory] = useState(null);
-  const [randomQuestion, setRandomQuestion] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isRandomQuestion, setIsRandomQuestion] = useState(false)
+  const dispatch = useDispatch();
+  const randomQuestion = useSelector((state) => state.randomQuestion);
   const [questionsAnswered, setQuestionsAnswered] = useState(0);
   const [score, setScore] = useState(0);
   const [isLastQuestion, setIsLastQuestion] = useState(false);
 
   const handleOptionSelected = (option, isCorrect) => {
     setSelectedCategory(null);
-    setRandomQuestion(null);
     setQuestionsAnswered(questionsAnswered + 1);
 
     if (isCorrect) {
@@ -29,32 +32,36 @@ export default function PlayScreen() {
   };
 
   useEffect(() => {
-    if (questionsAnswered <= 3) {
-      setSelectedCategory(null);
-      setRandomQuestion(null);
-
-      const filteredQuestions = questions.filter(
-        (question) => question.category !== selectedCategory
-      );
-
-      const randomQuestion =
-        filteredQuestions[Math.floor(Math.random() * filteredQuestions.length)];
-
-      setRandomQuestion(randomQuestion);
+    if (questionsAnswered <= 3 && selectedCategory) {
+      setIsRandomQuestion(false)
+      setIsLoading(true);
+      dispatch(getRandomQuestion(selectedCategory.id))
+        .then(() => {
+          setIsLoading(false); 
+          setIsRandomQuestion(true)
+        })
+        .catch((error) => {
+          console.error("Error al obtener la pregunta aleatoria:", error);
+          setIsLoading(false); 
+          setIsRandomQuestion(true)
+        
+        });
     }
-  }, [questionsAnswered]);
+  }, [questionsAnswered, dispatch, selectedCategory]);
 
   return (
     <View style={styles.container}>
       {questionsAnswered < 3 ? (
-        selectedCategory && randomQuestion ? (
+        selectedCategory && isRandomQuestion ? (
           <Play
-            category={randomQuestion.category}
-            correctAnswer={randomQuestion.correctAnswer}
-            incorrectAnswers={randomQuestion.incorrectAnswers}
-            question={randomQuestion.question.text}
+            category={selectedCategory.label}
+            correctAnswer={randomQuestion?.respuesta_correcta}
+            incorrectAnswers={randomQuestion?.respuestas_incorrectas}
+            question={randomQuestion?.pregunta}
             handleOptionSelected={handleOptionSelected}
           />
+        ) : isLoading ? (
+          <View><Text>Cargando...</Text></View>
         ) : (
           <SpinWheel
             onOptionSelected={setSelectedCategory}

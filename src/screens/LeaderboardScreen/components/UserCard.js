@@ -32,23 +32,24 @@ const styles = StyleSheet.create({
   container: {
     width: "100%",
     flexDirection: "row",
-    justifyContent: "space-between",
     alignItems: "center",
     backgroundColor: "#F5F8FA",
-    paddingHorizontal: 15,
+    paddingHorizontal: 5,
     paddingVertical: 25,
     borderRadius: 20,
   },
   userPosition: {
     color: "#766362",
+    width: "20%",
   },
   userName: {
     color: "#543B3B",
   },
   userInfo: {
-    maxWidth: "30%",
+    width: "55%",
+    maxWidth: "55%",
     flexDirection: "row",
-    justifyContent: "center",
+    justifyContent: "flex-start",
     alignItems: "center",
     gap: 10,
   },
@@ -62,6 +63,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     gap: 2,
+    width: "25%",
   },
   userPoints: {
     color: "#969696",

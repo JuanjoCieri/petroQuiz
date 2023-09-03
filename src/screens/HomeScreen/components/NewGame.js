@@ -12,7 +12,8 @@ export default function NewGame() {
   return (
     <TouchableOpacity style={styles.container} onPress={handleStartGame}>
       <View style={styles.left}>
-        <Text style={styles.playText}>Nueva Partida</Text>
+        <Text style={styles.playText}>Nueva</Text>
+        <Text style={styles.playText}>Partida</Text>
       </View>
       <View style={styles.right}>
         <Image
@@ -42,7 +43,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     maxWidth: "50%",
-    paddingHorizontal: 20,
   },
   right: {
     width: "50%",

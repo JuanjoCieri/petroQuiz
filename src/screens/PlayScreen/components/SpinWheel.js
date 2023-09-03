@@ -25,9 +25,9 @@ const SpinWheel = ({
 
   // Define your wheel data (sections, colors, labels, etc.)
   const wheelData = [
-    { label: "history", color: "red" },
-    { label: "society_and_culture", color: "blue" },
-    { label: "arts_and_literature", color: "green" },
+    { label: "Equipamiento", id: "1" },
+    { label: "Métodos", id: "2" },
+    { label: "Maniobra", id: "3" },
   ];
 
   const onSpin = () => {
@@ -49,9 +49,9 @@ const SpinWheel = ({
           (finalAngle % 360) / (360 / wheelData.length)
         );
         setSelectedCategoryView(true);
-        setSelectedOption(wheelData[selectedSection].label);
+        setSelectedOption(wheelData[selectedSection]);
         setTimeout(() => {
-          onOptionSelected(wheelData[selectedSection].label);
+          onOptionSelected(wheelData[selectedSection]);
           setSelectedCategoryView(false);
         }, 2000);
         setSelectedOptionIndex(null); // Store the selected option index
@@ -74,7 +74,7 @@ const SpinWheel = ({
     <>
       {selectedCategoryView && (
           <BlurView intensity={60} style={styles.selectedCategoryView}>
-            <Text style={styles.selectedCategoryViewText}>{selectedOption}</Text>
+            <Text style={styles.selectedCategoryViewText}>{selectedOption.label}</Text>
           </BlurView>
       )}
       <View style={styles.container}>

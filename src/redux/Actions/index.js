@@ -41,17 +41,12 @@ export function getLeaderboardRank() {
 
 export function getRandomQuestion(id) {
   return async (dispatch) => {
-    const headers = {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    };
     try {
       const response = await axios.get(
         `http://localhost:3000/questions/getRandomQuestion/` + id,
-        { headers: headers, withCredentials: true }
       );
       dispatch({
-        type: actions.GET_LOGGED_USER,
+        type: actions.GET_RANDOM_QUESTION,
         payload: response.data,
       });
     } catch (error) {
