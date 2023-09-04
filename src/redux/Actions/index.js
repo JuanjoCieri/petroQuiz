@@ -10,7 +10,7 @@ export function getLoggedUser() {
     };
     try {
       const response = await axios.get(
-        `http://localhost:3000/users/getLoggedUser`,
+        `https://petroquiz-back-1qeh-dev.fl0.io/users/getLoggedUser`,
         { headers: headers, withCredentials: true }
       );
       dispatch({
@@ -27,7 +27,7 @@ export function getLeaderboardRank() {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/users/topPlayers`
+        `https://petroquiz-back-1qeh-dev.fl0.io/users/topPlayers`
       );
       dispatch({
         type: actions.GET_LEADERBOARD_RANK,
@@ -43,7 +43,7 @@ export function getRandomQuestion(id) {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/questions/getRandomQuestion/` + id,
+        `https://petroquiz-back-1qeh-dev.fl0.io/questions/getRandomQuestion/` + id,
       );
       dispatch({
         type: actions.GET_RANDOM_QUESTION,
@@ -59,7 +59,7 @@ export function postGamePoints(payload) {
   return async (dispatch) => {
     try {
       const response = await axios.patch(
-        `http://localhost:3000/users/savePoints`, payload
+        `https://petroquiz-back-1qeh-dev.fl0.io/users/savePoints`, payload
       );
       dispatch({
         type: actions.POST_GAME_POINTS,

@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { StatusBar } from "expo-status-bar";
+import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { StatusBar } from "expo-status-bar";
 import { BlurView } from "expo-blur";
+import { useGameLogic } from "../../../hooks/useGameLogic";
 
 export default function Play({
   category,
@@ -10,48 +11,14 @@ export default function Play({
   question,
   handleOptionSelected,
 }) {
-  const [counter, setCounter] = useState(30);
-  const [intervalId, setIntervalId] = useState(null);
-  const [isCorrectView, setIsCorrectView] = useState(null);
-  const [isCorrect, setIsCorrect] = useState(null)
-
-  useEffect(() => {
-    if (counter === 0) {
-      clearInterval(intervalId);
-      handleOptionClick(null);
-    }
-  }, [counter]);
-
-  useEffect(() => {
-    if (counter > 0 && !intervalId) {
-      const id = setInterval(() => {
-        setCounter((prevCounter) => prevCounter - 1);
-      }, 1000);
-      setIntervalId(id);
-    }
-    return () => {
-      if (intervalId) {
-        clearInterval(intervalId);
-        setIntervalId(null);
-      }
-    };
-  }, []);
-
-  const [selectedOption, setSelectedOption] = useState(null);
-
-  const allOptions = [...incorrectAnswers, correctAnswer];
-
-  const handleOptionClick = (option) => {
-    setSelectedOption(option);
-
-    const isCorrect = option === correctAnswer;
-    setIsCorrect(isCorrect)
-    setIsCorrectView(true);
-    setTimeout(() => {
-      handleOptionSelected(category, isCorrect);
-      setIsCorrectView(false);
-    }, 1500);
-  };
+  const {
+    counter,
+    isCorrectView,
+    isCorrect,
+    selectedOption,
+    allOptions,
+    handleOptionClick,
+  } = useGameLogic(correctAnswer, incorrectAnswers, handleOptionSelected);
 
   return (
     <>
@@ -72,7 +39,15 @@ export default function Play({
           <View style={styles.questionBox}>
             {isCorrectView && (
               <BlurView style={styles.isCorrectView}>
-                <Text style={{color: isCorrect ? "green" : "red", fontSize: 20, fontWeight: "600"}}>{isCorrect ? "¡Correcto!" : "¡Incorrecto!"}</Text>
+                <Text
+                  style={{
+                    color: isCorrect ? "green" : "red",
+                    fontSize: 20,
+                    fontWeight: "600",
+                  }}
+                >
+                  {isCorrect ? "¡Correcto!" : "¡Incorrecto!"}
+                </Text>
               </BlurView>
             )}
             <Text style={styles.questionText}>{question}</Text>

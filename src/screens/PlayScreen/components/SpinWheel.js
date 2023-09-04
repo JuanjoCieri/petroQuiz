@@ -74,7 +74,7 @@ const SpinWheel = ({
     <>
       {selectedCategoryView && (
           <BlurView intensity={60} style={styles.selectedCategoryView}>
-            <Text style={styles.selectedCategoryViewText}>{selectedOption.label}</Text>
+            <Text style={styles.selectedCategoryViewText}>{selectedOption?.label}</Text>
           </BlurView>
       )}
       <View style={styles.container}>

@@ -75,8 +75,6 @@ function HomeTabs() {
         tabBarStyle: {
           height: 75,
           alignItems: "around",
-          borderTopLeftRadius: 40,
-          borderTopRightRadius: 40,
           backgroundColor: themeColors.bgLight,
         },
         tabBarItemStyle: {
