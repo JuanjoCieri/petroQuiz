@@ -11,19 +11,17 @@ export default function Categories() {
           Categorias
         </Text>
       </View>
-      <ScrollView style={styles.CategoriesContainer}>
-        <FlatList
-          data={categories}
-          ItemSeparatorComponent={() => <Text> </Text>}
-          renderItem={({ item: category }) => (
-            <CategoriesCard categoryName={category.categoryName} categoryIcon={category.categoryImage}/>
-          )}
-        />
-      </ScrollView>
+      <FlatList
+        data={categories}
+        ItemSeparatorComponent={() => <Text> </Text>}
+        renderItem={({ item: category }) => (
+          <CategoriesCard categoryName={category.categoryName} categoryIcon={category.categoryImage}/>
+        )}
+      />
     </View>
   );
 }
-
+  
 const styles = StyleSheet.create({
   Title: {
     color: "#371B1B",

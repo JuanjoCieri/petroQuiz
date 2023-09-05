@@ -26,6 +26,7 @@ const SpinWheel = ({
   // Define your wheel data (sections, colors, labels, etc.)
   const wheelData = [
     { label: "Equipamiento", id: "1" },
+    { label: "MDP", id: "4" },
     { label: "Métodos", id: "2" },
     { label: "Maniobra", id: "3" },
   ];
@@ -63,11 +64,11 @@ const SpinWheel = ({
   // Calculate the rotation angle based on the selected option index
   const rotationAngle =
     selectedOptionIndex == null
-      ? 3 * 3 + (360 / wheelData.length) * selectedOptionIndex
+      ? 4 * 4 + (360 / wheelData.length) * selectedOptionIndex
       : 0;
 
   const wheelRotation = wheelRef.current.interpolate({
-    inputRange: [0, 3 * 3], // Adjust this to multiple turns (e.g., 6 turns in this case)
+    inputRange: [0, 4 * 4], // Adjust this to multiple turns (e.g., 6 turns in this case)
     outputRange: ["1deg", `${rotationAngle}deg`], // Rotate to the calculated angle
   });
   return (
@@ -113,7 +114,7 @@ const SpinWheel = ({
             >
               <Image
                 style={{ width: 310, height: 310, zIndex: 100 }}
-                source={require("../../../../assets/images/Group7.png")}
+                source={require("../../../../assets/images/Group10.png")}
               />
             </Animated.View>
           </ImageBackground>

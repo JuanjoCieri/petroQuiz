@@ -10,6 +10,7 @@ export function useGameLogic(
   const [isCorrectView, setIsCorrectView] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
   const [selectedOption, setSelectedOption] = useState(null);
+  const [hasAnswered, setHasAnswered] = useState(false);
 
   const allOptions = [...incorrectAnswers, correctAnswer];
 
@@ -36,14 +37,17 @@ export function useGameLogic(
   }, []);
 
   const handleOptionClick = (option) => {
-    setSelectedOption(option);
-    const isCorrect = option === correctAnswer;
-    setIsCorrect(isCorrect);
-    setIsCorrectView(true);
-    setTimeout(() => {
-      handleOptionSelected(isCorrect);
-      setIsCorrectView(false);
-    }, 1500);
+    if (!hasAnswered) {
+      setSelectedOption(option);
+      const isCorrect = option === correctAnswer;
+      setIsCorrect(isCorrect);
+      setIsCorrectView(true);
+      setHasAnswered(true);
+      setTimeout(() => {
+        handleOptionSelected(isCorrect);
+        setIsCorrectView(false);
+      }, 1500);
+    }
   };
 
   return {
@@ -53,5 +57,6 @@ export function useGameLogic(
     selectedOption,
     allOptions,
     handleOptionClick,
+    hasAnswered,
   };
 }

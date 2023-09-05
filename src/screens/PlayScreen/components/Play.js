@@ -18,6 +18,7 @@ export default function Play({
     selectedOption,
     allOptions,
     handleOptionClick,
+    hasAnswered,
   } = useGameLogic(correctAnswer, incorrectAnswers, handleOptionSelected);
 
   return (
@@ -67,6 +68,7 @@ export default function Play({
                       : "white",
                 },
               ]}
+              disabled={hasAnswered}
             >
               <View>
                 <Text
@@ -174,6 +176,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     position: "absolute",
     alignItems: "center",
-    zIndex: 50
-  }
+    zIndex: 50,
+  },
 });

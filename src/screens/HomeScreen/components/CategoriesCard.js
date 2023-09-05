@@ -4,7 +4,7 @@ import asd from "../../../../assets/images/spinButtonn.png"
 export default function CategoriesCard({ categoryName, categoryIcon }) {
   return (
     <View style={styles.CategoryDiv}>
-      <Image source={{ uri: categoryIcon }} style={styles.CategoryImage} />
+      {/* <Image source={{ uri: categoryIcon }} style={styles.CategoryImage} /> */}
       <Text style={styles.Text}>{categoryName}</Text>
     </View>
   );

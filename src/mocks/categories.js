@@ -19,8 +19,8 @@ const categories = [
     categoryImage: metodosIcon,
   },
   {
-    categoryId: 3,
-    categoryName: "Metodos",
+    categoryId: 4,
+    categoryName: "MDP",
     categoryImage: metodosIcon,
   },
 ];

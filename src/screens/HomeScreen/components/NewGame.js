@@ -18,7 +18,7 @@ export default function NewGame() {
       <View style={styles.right}>
         <Image
           style={styles.image}
-          source={require("../../../../assets/homePlay/petroleumBase22.png")}
+          source={require("../../../../assets/homePlay/petroleumBase.png")}
         />
       </View>
     </TouchableOpacity>
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     // height: "100%",
     height: 97,
     width: 191,
-    right: 0,
+    right: 5,
     top: 0,
   },
 });
