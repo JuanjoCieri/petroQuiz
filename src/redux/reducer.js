@@ -1,16 +1,7 @@
 import * as actions from "./Actions/actionsTypes.js";
 
 const initialState = {
-  loggedUser: [
-    {
-      id: "bbY54SKLlCTvVO6GoCx8",
-      imagen:
-        "https://avatars.githubusercontent.com/u/100518547?s=400&u=a849a45f1772de56fb5cbe869a6dae3a76ee2b8b&v=4",
-      nombre: "Juan José",
-      email: "juin@hotmail.com.ar",
-      puntos: 450,
-    },
-  ],
+  loggedUser: [],
   randomQuestion: [],
   rankingList: [],
 };

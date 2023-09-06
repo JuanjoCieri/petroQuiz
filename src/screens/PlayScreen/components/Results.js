@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { postGamePoints } from "../../../redux/Actions";
 
 export default function Results({ score }) {
-  const loggedUser = useSelector((state) => state.loggedUser[0])
+  const loggedUser = useSelector((state) => state.loggedUser)
   const navigation = useNavigation();
 
   const handleBackHome = () => {

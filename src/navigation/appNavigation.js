@@ -10,18 +10,20 @@ import {
   HomeIcon as HomeOutline,
   TrophyIcon as TrophyOutline,
   ChartBarIcon as ChartBarOutline,
-  UserIcon as UserOutline
+  UserIcon as UserOutline,
 } from "react-native-heroicons/outline";
 import {
   HomeIcon as HomeSolid,
   TrophyIcon as TrophySolid,
   ChartBarIcon as ChartBarSolid,
-  UserIcon as UserSolid
+  UserIcon as UserSolid,
 } from "react-native-heroicons/solid";
 import Leaderboard from "../screens/LeaderboardScreen/Leaderboard";
+import LandingScreen from "../screens/LandingScreen/LandingScreen";
 import PlayScreen from "../screens/PlayScreen/PlayScreen";
 import TournamentScreen from "../screens/TournamentsScreen/TournamentScreen";
 import ProfileScreen from "../screens/ProfileScreen/ProfileScreen";
+import { useGetLoggedUser } from "../hooks/useGetLoggedUser";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -31,38 +33,44 @@ LogBox.ignoreLogs([
 ]);
 
 export default function AppNavigation() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          contentStyle: { backgroundColor: "transparent" },
-          headerShown: false,
-        }}
-        headerMode="none"
-      >
-        <Stack.Screen
-          name="Home"
-          options={{ headerShown: false }}
-          component={HomeTabs}
-        />
-        <Stack.Screen
-          name="Leaderboard"
-          options={{ headerShown: false }}
-          component={Leaderboard}
-        />
-        <Stack.Screen
-          name="Tournament"
-          options={{ headerShown: false }}
-          component={TournamentScreen}
-        />
-        <Stack.Screen
-          name="PlayScreen"
-          options={{ headerShown: false }}
-          component={PlayScreen}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+  const loggedUser = useGetLoggedUser();
+
+  if (loggedUser.length !== 0) {
+    return (
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            contentStyle: { backgroundColor: "transparent" },
+            headerShown: false,
+          }}
+          headerMode="none"
+        >
+          <Stack.Screen
+            name="Home"
+            options={{ headerShown: false }}
+            component={HomeTabs}
+          />
+          <Stack.Screen
+            name="Leaderboard"
+            options={{ headerShown: false }}
+            component={Leaderboard}
+          />
+          <Stack.Screen
+            name="Tournament"
+            options={{ headerShown: false }}
+            component={TournamentScreen}
+          />
+          <Stack.Screen
+            name="PlayScreen"
+            options={{ headerShown: false }}
+            component={PlayScreen}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
+  } else {
+    return <LandingScreen />;
+  }
 }
 
 function HomeTabs() {

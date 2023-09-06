@@ -1,8 +1,9 @@
 import axios from "axios";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import * as actions from "./actionsTypes";
 
-export function getLoggedUser() {
+export function getLoggedUser(id) {
   return async (dispatch) => {
     const headers = {
       "Content-Type": "application/json",
@@ -10,7 +11,7 @@ export function getLoggedUser() {
     };
     try {
       const response = await axios.get(
-        `https://petroquiz-back-1qeh-dev.fl0.io/users/getLoggedUser`,
+        `https://petroquiz-back-1qeh-dev.fl0.io/users/getLoggedUser/` + id,
         { headers: headers, withCredentials: true }
       );
       dispatch({
@@ -42,12 +43,11 @@ export function getLeaderboardRank() {
 export function postAuthenticateWithGoogle(payload) {
   return async (dispatch) => {
     try {
-      console.log("jola")
       const response = await axios.post(
         `https://petroquiz-back-1qeh-dev.fl0.io/users/authenticateWithGoogle`, payload
       );
-      const id = response.data
-      console.log(id, "ID")
+      const id = response?.data.id
+      await AsyncStorage.setItem("@userId", id)
       dispatch({
         type: actions.POST_AUTHENTICATE_WITH_GOOGLE,
         payload: response.data,

@@ -54,6 +54,6 @@ export default function App() {
     <Provider store={store}>
       {/* <LandingScreen promptAsync={promptAsync} /> */}
       <AppNavigation />
-    </Provider>
+    </Provider> 
   );
 }
