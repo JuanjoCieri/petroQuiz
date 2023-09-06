@@ -2,6 +2,7 @@ import { Text, View, StyleSheet, Image } from "react-native";
 import { useSelector } from "react-redux";
 
 export default function TopThree() {
+  
   const rankingList = useSelector((state) => state.rankingList)
 
   return (

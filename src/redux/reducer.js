@@ -36,6 +36,10 @@ export default function rootReducer(state = initialState, payload) {
       return {
         ...state,
       };
+    case actions.POST_AUTHENTICATE_WITH_GOOGLE:
+      return {
+        ...state,
+      };
     default:
       return state;
   }

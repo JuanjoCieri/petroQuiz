@@ -39,6 +39,25 @@ export function getLeaderboardRank() {
   };
 }
 
+export function postAuthenticateWithGoogle(payload) {
+  return async (dispatch) => {
+    try {
+      console.log("jola")
+      const response = await axios.post(
+        `https://petroquiz-back-1qeh-dev.fl0.io/users/authenticateWithGoogle`, payload
+      );
+      const id = response.data
+      console.log(id, "ID")
+      dispatch({
+        type: actions.POST_AUTHENTICATE_WITH_GOOGLE,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
 export function getRandomQuestion(id) {
   return async (dispatch) => {
     try {
