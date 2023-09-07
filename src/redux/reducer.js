@@ -31,6 +31,11 @@ export default function rootReducer(state = initialState, payload) {
       return {
         ...state,
       };
+      case actions.CLEAR_STATE:
+      return {
+        ...state,
+        loggedUser: [],
+      };
     default:
       return state;
   }

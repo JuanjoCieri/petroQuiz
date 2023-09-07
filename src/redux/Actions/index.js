@@ -89,3 +89,10 @@ export function postGamePoints(payload) {
     }
   };
 }
+
+export function clearState(payload) {
+  return {
+    type: actions.CLEAR_STATE,
+    payload,
+  };
+}

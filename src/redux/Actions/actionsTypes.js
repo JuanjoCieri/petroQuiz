@@ -13,3 +13,4 @@ export const GET_RANDOM_QUESTION = "GET_RANDOM_QUESTION"
 
 // End Questions Actions
 
+export const CLEAR_STATE = "CLEAR_STATE"
