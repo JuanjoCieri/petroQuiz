@@ -1,27 +1,23 @@
-import equipamientoIcon from "../../assets/categoryIcons/equipamiento.png";
-import metodosIcon from "../../assets/categoryIcons/metodos.png";
-import maniobraIcon from "../../assets/categoryIcons/maniobra.png";
-
 const categories = [
   {
     categoryId: 1,
     categoryName: "Equipamiento",
-    categoryImage: equipamientoIcon,
+    categoryImage: "equipamientoIcon.png",
   },
   {
     categoryId: 2,
     categoryName: "Maniobra",
-    categoryImage: maniobraIcon,
+    categoryImage: "maniobraIcon.png",
   },
   {
     categoryId: 3,
     categoryName: "Metodos",
-    categoryImage: metodosIcon,
+    categoryImage: "metodosIcon.png",
   },
   {
     categoryId: 4,
     categoryName: "MDP",
-    categoryImage: metodosIcon,
+    categoryImage: "mdpIcon.png",
   },
 ];
 

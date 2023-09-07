@@ -1,3 +1,4 @@
+import React from "react";
 import { BlurView } from "expo-blur";
 import {
   View,
@@ -5,26 +6,15 @@ import {
   StyleSheet,
   TouchableOpacity,
   ImageBackground,
+  Image,
 } from "react-native";
 import { useDispatch } from "react-redux";
 import { postAuthenticateWithGoogle } from "../../redux/Actions";
-
-/////////////////
-
-import * as Google from "expo-auth-session/providers/google";
-import {
-  GoogleAuthProvider,
-  onAuthStateChanged,
-  signInWithCredential,
-} from "firebase/auth";
-import * as WebBrowser from "expo-web-browser";
-import { auth } from "../../../firebase-config";
-import { useEffect } from "react";
-
-WebBrowser.maybeCompleteAuthSession();
+import useGoogleLogin from "../../hooks/useGoogleLogin";
 
 export default function LandingScreen() {
   const dispatch = useDispatch();
+  const loginWithGoogle = useGoogleLogin();
 
   const aad = () => {
     const payload = {
@@ -37,66 +27,28 @@ export default function LandingScreen() {
     dispatch(postAuthenticateWithGoogle(payload));
   };
 
-///////////////////////////////////////
-
-// const dispatch = useDispatch();
-  const [request, response, promptAsync] = Google.useAuthRequest(
-    {
-      iosClientId:
-        "611019823270-2rahov9v0p3fqufrebtv5io6ekdegn2m.apps.googleusercontent.com",
-      androidClientId:
-        "611019823270-jvic2hkktr81eprhfrg4u08ti57d69ov.apps.googleusercontent.com",
-      webClientId:
-        "611019823270-h71ppt61t8q0re3868sb6tc7i95ajj0j.apps.googleusercontent.com",
-    },
-    { native: "blank://" }
-  );
-  useEffect(() => {
-    if (response?.type == "success") {
-      const { id_token } = response.params;
-      const credential = GoogleAuthProvider.credential(id_token);
-      signInWithCredential(auth, credential);
-    }
-  }, [response]);
-  useEffect(() => {
-    const unsub = onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        const payload = {
-          uid: user.uid,
-          displayName: user.displayName,
-          email: user.email,
-          photoURL: user.photoURL,
-        };
-        dispatch(postAuthenticateWithGoogle(payload));
-      }
-    });
-    return () => unsub();
-  }, []);
-
-//////////////////////////////////////
-
   return (
-    <ImageBackground
-      source={require("../../../assets/profileBackground.png")}
-      style={styles.container}
-    >
-    <BlurView intensity={15} style={styles.container}>
-      <View style={{gap: 100}}>
-        <View>
-          <Text>Bienvenidos a</Text>
-          <Text style={{fontSize: 65}}>PetroQuiz</Text>
-        </View>
-        <View style={{gap: 40}}>
-          <TouchableOpacity onPress={aad}>
-            <Text>Registrarse</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={promptAsync}>
-            <Text>Registrarse Google</Text>
-          </TouchableOpacity>
-        </View>
+    <View style={styles.container}>
+      <View>
+        <Text style={{ fontSize: 25, fontWeight: "800" }}>PetroQuiz</Text>
       </View>
-    </BlurView>
-    </ImageBackground>
+      <View>
+      <Image style={{width: 350, height: 350}} source={require("../../../assets/landingPage/landingIcon.png")} />
+      </View>
+      <View style={{gap: 10, paddingHorizontal: 30}}>
+        <Text style={{textAlign: "center", fontSize: 30, fontWeight: "600"}}>Compitiendo en el mundo del petróleo.</Text>
+        <Text style={{textAlign: "center"}}>Pon a prueba tus conocimientos, desafía a amigos y compite para convertirte en un experto en la industria.</Text>
+      </View>
+      <View>
+        {/* <TouchableOpacity onPress={aad}>
+          <Text>Registrarse</Text>
+        </TouchableOpacity> */}
+        <TouchableOpacity onPress={loginWithGoogle} style={styles.googleButton}>
+      <Image style={{width: 25, height: 25}} source={require("../../../assets/landingPage/googleIcon.png")} />
+          <Text style={styles.googleButtonText}>Ingresá con Google</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
   );
 }
 
@@ -104,7 +56,26 @@ const styles = StyleSheet.create({
   container: {
     width: "100%",
     height: "100%",
+    justifyContent: "space-around",
+    alignItems: "center",
+    
+  },
+  googleButton: {
+    backgroundColor: "#4081EC",
+    paddingHorizontal: 4,
+    paddingVertical: 2,
     justifyContent: "center",
     alignItems: "center",
+    paddingVertical: 8,
+    borderRadius: 20,
+    flexDirection: "row",
+    paddingHorizontal: 24,
+    paddingVertical: 12,
+    gap: 10
+  },
+  googleButtonText: {
+    color: "white",
+    fontSize: 20,
+    fontWeight: "600",
   },
 });

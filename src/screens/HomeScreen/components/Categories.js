@@ -1,7 +1,4 @@
-import { Text, View, StyleSheet, ScrollView } from "react-native";
-import { FlatList } from "react-native";
-import categories from "../../../mocks/categories";
-import CategoriesCard from "./CategoriesCard";
+import { Text, View, StyleSheet, ScrollView, Image } from "react-native";
 
 export default function Categories() {
   return (
@@ -11,26 +8,65 @@ export default function Categories() {
           Categorias
         </Text>
       </View>
-      <FlatList
-        data={categories}
-        ItemSeparatorComponent={() => <Text> </Text>}
-        renderItem={({ item: category }) => (
-          <CategoriesCard categoryName={category.categoryName} categoryIcon={category.categoryImage}/>
-        )}
-      />
+      <View style={styles.cards}>
+        <View style={styles.CategoryDiv}>
+          <Image
+            style={{ width: 55, height: 55 }}
+            source={require(`../../../../assets/categoryIcons/equipamientoIcon.png`)}
+          />
+          <Text style={styles.Text}>Equipamiento</Text>
+        </View>
+        <View style={styles.CategoryDiv}>
+          <Image
+            style={{ width: 55, height: 55 }}
+            source={require(`../../../../assets/categoryIcons/metodosIcon.png`)}
+          />
+          <Text style={styles.Text}>Metodos</Text>
+        </View>
+        <View style={styles.CategoryDiv}>
+          <Image
+            style={{ width: 55, height: 55 }}
+            source={require(`../../../../assets/categoryIcons/maniobraIcon.png`)}
+          />
+          <Text style={styles.Text}>Maniobra</Text>
+        </View>
+        <View style={styles.CategoryDiv}>
+          <Image
+            style={{ width: 55, height: 55 }}
+            source={require(`../../../../assets/categoryIcons/MDPIcon.png`)}
+          />
+          <Text style={styles.Text}>MDP</Text>
+        </View>
+      </View>
     </View>
   );
 }
-  
+
 const styles = StyleSheet.create({
   Title: {
     color: "#371B1B",
     fontWeight: "500",
   },
-  CategoriesContainer: {},
+  cards: {
+    gap: 20,
+  },
   CategoryDiv: {
-    width: 149,
-    height: 149,
-    backgroundColor: "red",
+    flexDirection: "row",
+    width: "100%",
+    height: 104,
+    backgroundColor: "#F9CA86",
+    borderRadius: 20,
+    justifyContent: "flex-start",
+    alignItems: "center",
+    paddingLeft: 20,
+    gap: 60,
+  },
+  Text: {
+    fontSize: 15,
+    fontWeight: "700",
+  },
+  CategoryImage: {
+    width: 40,
+    height: 40,
   },
 });
