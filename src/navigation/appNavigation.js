@@ -35,7 +35,7 @@ LogBox.ignoreLogs([
 export default function AppNavigation() {
   const loggedUser = useGetLoggedUser();
 
-  if (loggedUser.length !== 0) {
+  if (true) {
     return (
       <NavigationContainer>
         <Stack.Navigator
@@ -58,7 +58,7 @@ export default function AppNavigation() {
           <Stack.Screen
             name="Tournament"
             options={{ headerShown: false }}
-            component={TournamentScreen}
+            component={LandingScreen}
           />
           <Stack.Screen
             name="PlayScreen"
@@ -92,7 +92,7 @@ function HomeTabs() {
     >
       <Tab.Screen name="HomeScreen" component={HomeScreen} />
       <Tab.Screen name="LeaderboardScreen" component={Leaderboard} />
-      <Tab.Screen name="TournamentScreen" component={TournamentScreen} />
+      <Tab.Screen name="TournamentScreen" component={LandingScreen} />
       <Tab.Screen name="ProfileScreen" component={ProfileScreen} />
     </Tab.Navigator>
   );

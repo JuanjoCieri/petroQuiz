@@ -13,20 +13,19 @@ export default function RankingList() {
   }, []);
 
   return (
-    <ScrollView style={styles.container}>
-      <FlatList
-        data={rankingList}
-        ItemSeparatorComponent={() => <Text> </Text>}
-        renderItem={({ item: user, index }) => (
-          <UserCard
-            userPosition={index + 1} 
-            userName={user.nombre}
-            userPoints={user.puntos}
-            userImage={user.imagen}
-          />
-        )}
-      />
-    </ScrollView>
+    <FlatList
+      style={styles.container}
+      data={rankingList}
+      ItemSeparatorComponent={() => <Text> </Text>}
+      renderItem={({ item: user, index }) => (
+        <UserCard
+          userPosition={index + 1} 
+          userName={user.nombre}
+          userPoints={user.puntos}
+          userImage={user.imagen}
+        />
+      )}
+    />
   );
 }
 

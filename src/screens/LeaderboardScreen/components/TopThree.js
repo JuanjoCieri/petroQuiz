@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   userImage: {
     width: 60,
     height: 60,
-    borderRadius: "100%",
+    borderRadius: 30,
     marginBottom: 10,
   },
   topImage: {

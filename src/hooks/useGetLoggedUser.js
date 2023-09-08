@@ -10,10 +10,10 @@ export function useGetLoggedUser() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const userId = await AsyncStorage.getItem("@userId");
-        if (userId) {
-          dispatch(getLoggedUser(userId));
-        }
+        // const userId = await AsyncStorage.getItem("@userId");
+        // if (userId) {
+          dispatch(getLoggedUser("987654321"));
+        // }
       } catch (error) {
         console.error("Error al obtener el usuario:", error);
       }

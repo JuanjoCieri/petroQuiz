@@ -38,7 +38,7 @@ export default function useGoogleLogin() {
           email: user.email,
           photoURL: user.photoURL,
         };
-        dispatch(postAuthenticateWithGoogle(payload));
+        dispatch(postAuthenticateWithGoogle(user));
       }
     });
     return () => unsub();

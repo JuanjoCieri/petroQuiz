@@ -40,11 +40,11 @@ export function getLeaderboardRank() {
   };
 }
 
-export function postAuthenticateWithGoogle(payload) {
+export function postAuthenticateWithGoogle(user) {
   return async (dispatch) => {
     try {
       const response = await axios.post(
-        `https://petroquiz-back-1qeh-dev.fl0.io/users/authenticateWithGoogle`, payload
+        `https://petroquiz-back-1qeh-dev.fl0.io/users/authenticateWithGoogle`, user
       );
       const id = response?.data.id
       await AsyncStorage.setItem("@userId", id)
