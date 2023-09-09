@@ -30,6 +30,8 @@ export default function PlayScreen() {
     questionsAnswered
   );
 
+  console.log(selectedCategory, randomQuestion)
+
   return (
     <View style={styles.container}>
       {questionsAnswered < 3 ? (

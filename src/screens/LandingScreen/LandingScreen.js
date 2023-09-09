@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { BlurView } from "expo-blur";
 import {
   View,
@@ -11,10 +11,49 @@ import {
 import { useDispatch } from "react-redux";
 import { postAuthenticateWithGoogle } from "../../redux/Actions";
 import useGoogleLogin from "../../hooks/useGoogleLogin";
+import { GoogleSignin, GoogleSigninButton } from "@react-native-google-signin/google-signin";
+import auth from '@react-native-firebase/auth';
 
 export default function LandingScreen() {
   const dispatch = useDispatch();
-  const loginWithGoogle = useGoogleLogin();
+  const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState();
+  const loggedUser = useGetLoggedUser();
+
+  GoogleSignin.configure({
+    webClientId: '611019823270-h71ppt61t8q0re3868sb6tc7i95ajj0j.apps.googleusercontent.com',
+  });
+
+  function onAuthStateChanged(user) {
+    setUser(user);
+    if (initializing) setInitializing(false);
+  }
+
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // 
+  }, []);
+
+  const onGoogleButtonPress = async () => {
+    // Check if your device supports Google Play
+    await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+    // Get the users ID token
+    const { idToken } = await GoogleSignin.signIn();
+  
+    // Create a Google credential with the token
+    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+  
+    // Sign-in the user with the credential
+    const users = auth().signInWithCredential(googleCredential)
+    users.then((user) => {
+      console.log(user)
+    }).catch((error) => {
+      console.log(error)
+    })
+  }
+
+  if (initializing) return null;
+  // const loginWithGoogle = useGoogleLogin();
 
   const aad = () => {
     const payload = {
@@ -40,9 +79,14 @@ export default function LandingScreen() {
         <Text style={{textAlign: "center"}}>Pon a prueba tus conocimientos, desafía a amigos y compite para convertirte en un experto en la industria.</Text>
       </View>
       <View>
+        <View>
+          <Text>{user?.displayName}</Text>
+        </View>
         {/* <TouchableOpacity onPress={aad}>
           <Text>Registrarse</Text>
         </TouchableOpacity> */}
+        <GoogleSigninButton 
+        style={{width: 300, height: 65}} onPress={onGoogleButtonPress}/>
         <TouchableOpacity onPress={loginWithGoogle} style={styles.googleButton}>
       <Image style={{width: 25, height: 25}} source={require("../../../assets/landingPage/googleIcon.png")} />
           <Text style={styles.googleButtonText}>Ingresá con Google</Text>

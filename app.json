@@ -2,6 +2,7 @@
   "expo": {
     "name": "blank",
     "slug": "blank",
+    "plugins": ["@react-native-google-signin/google-signin"],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -19,6 +20,7 @@
       "bundleIdentifier": "com.anonymus.petroQuiz"
     },
     "android": {
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"

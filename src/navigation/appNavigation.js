@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "../screens/HomeScreen/HomeScreen";
@@ -130,7 +130,7 @@ const menuIcons = (route, focused) => {
   let buttonClass = focused ? "bg-white" : "";
   return (
     <View
-      className={"flex items-center rounded-full p-3 shadow " + buttonClass}
+      className={"flex items-center rounded-full p-3 " + buttonClass}
     >
       {icon}
     </View>

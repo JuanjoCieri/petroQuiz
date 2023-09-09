@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "611019823270",
+    "project_id": "petroquiz-e2c73",
+    "storage_bucket": "petroquiz-e2c73.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:611019823270:android:586565eb3ff5395619bc67",
+        "android_client_info": {
+          "package_name": "com.anonymus.petroQuiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "611019823270-jvic2hkktr81eprhfrg4u08ti57d69ov.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.anonymus.petroQuiz",
+            "certificate_hash": "f81087adbc5240fda0f0948f8ba92734adb801ab"
+          }
+        },
+        {
+          "client_id": "611019823270-h71ppt61t8q0re3868sb6tc7i95ajj0j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBN03QPHMQwfCOPIF8tHGOuEBqi-3wnkaM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "611019823270-bkhv4sug7egi9r65i80h7ooue22pkbvv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "611019823270-2rahov9v0p3fqufrebtv5io6ekdegn2m.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.anonymus.petroQuiz"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
