@@ -1,5 +1,4 @@
 import { View, StyleSheet, Image, Text } from "react-native";
-import users from "../../../mocks/users";
 import { useSelector } from "react-redux";
 
 export default function UserData() {
@@ -23,6 +22,7 @@ const styles = StyleSheet.create({
     height: "40%",
     justifyContent: "space-around",
     alignItems: "center",
+    paddingHorizontal: 60
   },
   userData: {
     justifyContent: "center",
@@ -38,7 +38,8 @@ const styles = StyleSheet.create({
   userName: {
     fontSize: 30,
     color: "black",
-    fontWeight: "600"
+    fontWeight: "600",
+    textAlign: "center"
   },
   userPoints: {
     color: "#371B1B",

@@ -10,26 +10,25 @@ import {
 } from "react-native";
 import { useDispatch } from "react-redux";
 import { postAuthenticateWithGoogle } from "../../redux/Actions";
-import useGoogleLogin from "../../hooks/useGoogleLogin";
-// import useGoogleLogin from "../../hooks/useGoogleLogin";
-// import { GoogleSignin, GoogleSigninButton } from "@react-native-google-signin/google-signin";
-// import auth from '@react-native-firebase/auth';
+import { GoogleSignin, statusCodes } from "@react-native-google-signin/google-signin";
+import { useGoogleSignIn } from "../../hooks/useGoogleSignIn";
 
 export default function LandingScreen() {
   const dispatch = useDispatch();
-  const loginWithGoogle = useGoogleLogin();
 
-  const aad = () => {
-    const payload = {
-      uid: "987654321",
-      displayName: "Juan José",
-      email: "juin@hotmail.com.ar",
-      photoURL:
-        "https://avatars.githubusercontent.com/u/100518547?s=400&u=a849a45f1772de56fb5cbe869a6dae3a76ee2b8b&v=4",
-    };
-    dispatch(postAuthenticateWithGoogle(payload));
-  };
+  // const aad = () => {
+  //   const payload = {
+  //     uid: "987654321",
+  //     displayName: "Juan José",
+  //     email: "juin@hotmail.com.ar",
+  //     photoURL:
+  //       "https://avatars.githubusercontent.com/u/100518547?s=400&u=a849a45f1772de56fb5cbe869a6dae3a76ee2b8b&v=4",
+  //   };
+  //   dispatch(postAuthenticateWithGoogle(payload));
+  // };
 
+  const { userInfo, signIn } = useGoogleSignIn();
+  
   return (
     <View style={styles.container}>
       <View>
@@ -49,7 +48,7 @@ export default function LandingScreen() {
         {/* <TouchableOpacity onPress={aad}>
           <Text>Registrarse</Text>
         </TouchableOpacity> */}
-        <TouchableOpacity onPress={loginWithGoogle} style={styles.googleButton}>
+        <TouchableOpacity onPress={() => signIn()} style={styles.googleButton}>
       <Image style={{width: 25, height: 25}} source={require("../../../assets/landingPage/googleIcon.png")} />
           <Text style={styles.googleButtonText}>Ingresá con Google</Text>
         </TouchableOpacity>

@@ -35,7 +35,7 @@ LogBox.ignoreLogs([
 export default function AppNavigation() {
   const loggedUser = useGetLoggedUser();
 
-  if (true) {
+  if (loggedUser && Object.keys(loggedUser).length > 0) {
     return (
       <NavigationContainer>
         <Stack.Navigator
