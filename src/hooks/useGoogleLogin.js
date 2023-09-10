@@ -19,7 +19,10 @@ export default function useGoogleLogin() {
       "611019823270-jvic2hkktr81eprhfrg4u08ti57d69ov.apps.googleusercontent.com",
     webClientId:
       "611019823270-h71ppt61t8q0re3868sb6tc7i95ajj0j.apps.googleusercontent.com",
+    
   });
+
+  console.log(response)
 
   useEffect(() => {
     if (response?.type === "success") {
@@ -31,6 +34,7 @@ export default function useGoogleLogin() {
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, async (user) => {
+      console.log(user)
       if (user) {
         const payload = {
           uid: user.uid,
@@ -38,7 +42,7 @@ export default function useGoogleLogin() {
           email: user.email,
           photoURL: user.photoURL,
         };
-        dispatch(postAuthenticateWithGoogle(user));
+        dispatch(postAuthenticateWithGoogle(payload));
       }
     });
     return () => unsub();
