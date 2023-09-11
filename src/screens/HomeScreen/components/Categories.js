@@ -1,8 +1,8 @@
-import { Text, View, StyleSheet, ScrollView, Image } from "react-native";
+import { Text, View, StyleSheet, Image } from "react-native";
 
 export default function Categories() {
   return (
-    <View>
+    <View style={{marginBottom: 20}}>
       <View className="py-10">
         <Text style={styles.Title} className="text-3xl">
           Categorias

@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 
 export default function UserData() {
   const loggedUser = useSelector((state) => state.loggedUser)
+  
   return (
     <View style={styles.container}>
       <View style={styles.userData}>

@@ -4,17 +4,17 @@ import {
   ArrowLeftOnRectangleIcon,
 } from "react-native-heroicons/solid";
 import { ChatBubbleBottomCenterIcon } from "react-native-heroicons/outline";
-import { useDispatch } from "react-redux";
-import { clearState } from "../../../redux/Actions";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+// import { useDispatch } from "react-redux";
+// import { clearState } from "../../../redux/Actions";
+// import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function SettingsList() {
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
-  const logOut = async () => {
-    await AsyncStorage.removeItem("@userId")
-    dispatch(clearState())
-  }
+  // const logOut = async () => {
+  //   await AsyncStorage.removeItem("@userId")
+  //   dispatch(clearState())
+  // }
 
   return (
     <View style={styles.container}>
@@ -26,7 +26,7 @@ export default function SettingsList() {
         <ChatBubbleBottomCenterIcon color={"black"} size={35} />
         <Text style={styles.buttonText}>Enviar Pregunta</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={logOut}>
+      <TouchableOpacity style={styles.button}>
         <ArrowLeftOnRectangleIcon color={"black"} size={35} />
         <Text style={styles.buttonText}>Cerrar Sesión</Text>
       </TouchableOpacity>

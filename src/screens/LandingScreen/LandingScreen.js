@@ -13,7 +13,7 @@ import { postAuthenticateWithGoogle } from "../../redux/Actions";
 import { GoogleSignin, statusCodes } from "@react-native-google-signin/google-signin";
 import { useGoogleSignIn } from "../../hooks/useGoogleSignIn";
 
-export default function LandingScreen() {
+export default function LandingScreen({ onUserInfo }) {
   const dispatch = useDispatch();
 
   // const aad = () => {
@@ -28,6 +28,14 @@ export default function LandingScreen() {
   // };
 
   const { userInfo, signIn } = useGoogleSignIn();
+
+  useEffect(() => {
+    // Verificar si userInfo está definido y no es nulo
+    if (userInfo) {
+      // Llamar a la función onUserInfo para pasar userInfo al componente padre
+      onUserInfo(userInfo);
+    }
+  }, [userInfo, onUserInfo]);
   
   return (
     <View style={styles.container}>

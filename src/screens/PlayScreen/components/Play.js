@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { BlurView } from "expo-blur";
 import { useGameLogic } from "../../../hooks/useGameLogic";
+import { useGameTimer } from "../../../hooks/useGameTimer";
 
 export default function Play({
   category,
@@ -11,8 +12,9 @@ export default function Play({
   question,
   handleOptionSelected,
 }) {
+  const { counter } = useGameTimer(); 
+
   const {
-    counter,
     isCorrectView,
     isCorrect,
     selectedOption,

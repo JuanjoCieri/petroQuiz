@@ -25,12 +25,14 @@ export default function PlayScreen() {
     }
   };
 
+  console.log("score", score)
+
   const { randomQuestion, isLoading, isRandomQuestion } = useRandomQuestion(
     selectedCategory,
     questionsAnswered
   );
 
-  console.log(selectedCategory, randomQuestion)
+  console.log(selectedCategory, isRandomQuestion, randomQuestion)
 
   return (
     <View style={styles.container}>

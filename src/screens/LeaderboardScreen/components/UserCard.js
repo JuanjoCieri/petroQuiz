@@ -15,7 +15,7 @@ export default function UserCard({
       <View style={styles.userInfo}>
         <Image source={{ uri: userImage }} style={styles.userImage} />
         <Text style={styles.userName} className="text-lg">
-          {userName}
+          {userName.split(" ")[0]}
         </Text>
       </View>
       <View style={styles.userPointsContainer}>

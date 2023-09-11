@@ -40,6 +40,6 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 0,
     paddingHorizontal: 25,
-    paddingVertical: 40,
+    paddingVertical: 10,
   },
 });

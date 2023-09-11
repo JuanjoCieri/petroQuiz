@@ -22,7 +22,7 @@ export default function Results({ score }) {
       points: score
     }
     dispatch(postGamePoints(payload))
-  }, [])
+  }, [score, loggedUser.id, dispatch])
 
   return (
     <>
