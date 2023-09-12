@@ -23,6 +23,7 @@ export default function RankingList() {
           userName={user.nombre}
           userPoints={user.puntos}
           userImage={user.imagen}
+          userId={user.id}
         />
       )}
     />

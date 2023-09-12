@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "blank",
-    "slug": "blank",
+    "name": "PetroQuiz",
+    "slug": "PetroQuiz",
     "plugins": ["@react-native-google-signin/google-signin"],
     "version": "1.0.0",
     "orientation": "portrait",
@@ -35,6 +35,6 @@
         "projectId": "3192b982-a2e2-40f7-be78-48b0bc866dd6"
       }
     },
-    "scheme": "blank"
+    "scheme": "PetroQuiz"
   }
 }

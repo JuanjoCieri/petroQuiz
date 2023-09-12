@@ -3,6 +3,7 @@ import * as actions from "./Actions/actionsTypes.js";
 const initialState = {
   loggedUser: [],
   randomQuestion: [],
+  userDetail: [],
   rankingList: [],
 };
 
@@ -12,6 +13,11 @@ export default function rootReducer(state = initialState, payload) {
       return {
         ...state,
         loggedUser: payload.payload,
+      };
+    case actions.GET_USER_DETAIL:
+      return {
+        ...state,
+        userDetail: payload.payload,
       };
     case actions.GET_RANDOM_QUESTION:
       return {
@@ -31,10 +37,15 @@ export default function rootReducer(state = initialState, payload) {
       return {
         ...state,
       };
-      case actions.CLEAR_STATE:
+    case actions.CLEAR_STATE:
       return {
         ...state,
         loggedUser: [],
+      };
+    case actions.CLEAR_STATE_USER_DETAIL:
+      return {
+        ...state,
+        userDetail: [],
       };
     default:
       return state;

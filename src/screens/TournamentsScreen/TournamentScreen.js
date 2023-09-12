@@ -1,11 +1,13 @@
 import { Text, View, StyleSheet } from "react-native";
+import UserDetailModal from "../LeaderboardScreen/components/UserDetailModal";
 
 export default function TournamentScreen() {
-
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>En desarrollo</Text>
-    </View>
+    <>
+      <View style={styles.container}>
+        <Text style={styles.text}>En desarrollo</Text>
+      </View>
+    </>
   );
 }
 

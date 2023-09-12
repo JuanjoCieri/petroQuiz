@@ -24,6 +24,7 @@ import PlayScreen from "../screens/PlayScreen/PlayScreen";
 import TournamentScreen from "../screens/TournamentsScreen/TournamentScreen";
 import ProfileScreen from "../screens/ProfileScreen/ProfileScreen";
 import { useGetLoggedUser } from "../hooks/useGetLoggedUser";
+import SearchScreen from "../screens/SearchScreen/SearchScreen";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();

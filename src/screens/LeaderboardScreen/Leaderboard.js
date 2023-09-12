@@ -12,6 +12,8 @@ import { useNavigation } from "@react-navigation/native";
 import { ChevronLeftIcon } from "react-native-heroicons/solid";
 import TopThree from "./components/TopThree";
 import { BlurView } from "expo-blur";
+import UserDetailModal from "./components/UserDetailModal";
+import { useSelector } from "react-redux";
 
 export default function Leaderboard() {
   const navigation = useNavigation();
@@ -20,11 +22,15 @@ export default function Leaderboard() {
     navigation.goBack();
   };
 
+  const userDetail = useSelector((state) => state.userDetail)
+
   return (
     <ImageBackground
       source={require("../../../assets/profileBackground.png")}
       style={styles.container}
     >
+      {userDetail.length !== 0 ? <UserDetailModal /> : false}
+     
       <BlurView intensity={15} style={styles.container}>
         <View className="py-5">
           <StatusBar />

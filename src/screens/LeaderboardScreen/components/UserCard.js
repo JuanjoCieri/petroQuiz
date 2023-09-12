@@ -1,14 +1,22 @@
-import { View, StyleSheet, Text, Image } from "react-native";
+import { View, StyleSheet, Text, Image, TouchableOpacity } from "react-native";
 import { CurrencyDollarIcon } from "react-native-heroicons/solid";
+import { useDispatch } from "react-redux";
+import { getUserDetail } from "../../../redux/Actions";
 
 export default function UserCard({
   userPosition,
   userPoints,
   userName,
   userImage,
+  userId
 }) {
+  const dispatch = useDispatch();
+
+  const handleUserCardClick = () => {
+    dispatch(getUserDetail(userId));
+  };
   return (
-    <View style={styles.container}>
+    <TouchableOpacity onPress={handleUserCardClick} style={styles.container}>
       <View style={styles.userPosition}>
         <Text className="text-2xl">{userPosition}</Text>
       </View>
@@ -24,7 +32,7 @@ export default function UserCard({
           {userPoints} puntos
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 

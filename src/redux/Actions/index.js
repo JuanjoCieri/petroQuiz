@@ -3,6 +3,27 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import * as actions from "./actionsTypes";
 
+export function getUserDetail(id) {
+  return async (dispatch) => {
+    const headers = {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    };
+    try {
+      const response = await axios.get(
+        `https://petroquiz-back-1qeh-dev.fl0.io/users/getUserDetail/` + id,
+        { headers: headers, withCredentials: true }
+      );
+      dispatch({
+        type: actions.GET_USER_DETAIL,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
 export function getLoggedUser(id) {
   return async (dispatch) => {
     const headers = {
@@ -93,6 +114,13 @@ export function postGamePoints(payload) {
 export function clearState(payload) {
   return {
     type: actions.CLEAR_STATE,
+    payload,
+  };
+}
+
+export function clearStateUserDetail(payload) {
+  return {
+    type: actions.CLEAR_STATE_USER_DETAIL,
     payload,
   };
 }
