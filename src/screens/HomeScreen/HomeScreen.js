@@ -21,5 +21,6 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 20,
+    backgroundColor: "white"
   },
 });

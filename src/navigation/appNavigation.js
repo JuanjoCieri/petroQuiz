@@ -35,20 +35,20 @@ LogBox.ignoreLogs([
 
 export default function AppNavigation() {
   const loggedUser = useGetLoggedUser();
-  const [user, setUser] = useState([])
+  const [user, setUser] = useState([]);
 
   const handleUserInfo = (userInfo) => {
-    setUser(userInfo)
-    loggedUser
+    setUser(userInfo);
+    loggedUser;
     console.log(userInfo, "userinfo");
-  }
+  };
 
   if (user && Object.keys(user).length > 0) {
     return (
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
-            contentStyle: { backgroundColor: "transparent" },
+            contentStyle: { backgroundColor: "white" },
             headerShown: false,
           }}
           headerMode="none"
@@ -73,11 +73,16 @@ export default function AppNavigation() {
             options={{ headerShown: false }}
             component={PlayScreen}
           />
+          <Stack.Screen
+            name="SearchScreen"
+            options={{ headerShown: false }}
+            component={SearchScreen}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     );
   } else {
-    return <LandingScreen onUserInfo={handleUserInfo}/>;
+    return <LandingScreen onUserInfo={handleUserInfo} />;
   }
 }
 
@@ -137,9 +142,7 @@ const menuIcons = (route, focused) => {
 
   let buttonClass = focused ? "bg-white" : "";
   return (
-    <View
-      className={"flex items-center rounded-full p-3 " + buttonClass}
-    >
+    <View className={"flex items-center rounded-full p-3 " + buttonClass}>
       {icon}
     </View>
   );

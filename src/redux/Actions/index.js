@@ -24,6 +24,27 @@ export function getUserDetail(id) {
   };
 }
 
+export function getUsersByName(name) {
+  return async (dispatch) => {
+    const headers = {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    };
+    try {
+      const response = await axios.get(
+        `https://petroquiz-back-1qeh-dev.fl0.io/users/getUsersByName?name=${name}`,
+        { headers: headers, withCredentials: true }
+      );
+      dispatch({
+        type: actions.GET_USERS_BY_NAME,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
 export function getLoggedUser(id) {
   return async (dispatch) => {
     const headers = {

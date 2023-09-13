@@ -1,9 +1,14 @@
+import { useNavigation } from "@react-navigation/native";
 import { StyleSheet, Text, View } from "react-native";
 import { TouchableWithoutFeedback } from "react-native";
 import { MagnifyingGlassIcon } from "react-native-heroicons/solid";
 export default function SearchBar() {
+  const navigation = useNavigation()
+  const handleGoSearch = () => {
+    navigation.navigate("SearchScreen")
+  };
   return (
-    <TouchableWithoutFeedback style={styles.container}>
+    <TouchableWithoutFeedback style={styles.container} onPress={handleGoSearch}>
       <View style={styles.container}>
         <View style={styles.both}>
           <MagnifyingGlassIcon width={30} stroke={"gray"} />
@@ -16,8 +21,8 @@ export default function SearchBar() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'grey',
-    borderWidth: 1,
+    backgroundColor: '#EFEFEE',
+    borderWidth: 0.5,
     width: "100%",
     height: 50,
     backgroundColor: "white",

@@ -1,6 +1,7 @@
 // Users Actions
 
 export const GET_USER_DETAIL = "GET_USER_DETAIL"
+export const GET_USERS_BY_NAME = "GET_USERS_BY_NAME"
 export const GET_LOGGED_USER = "GET_LOGGED_USER"
 export const GET_LEADERBOARD_RANK = "GET_LEADERBOARD_RANK"
 export const POST_GAME_POINTS = "POST_GAME_POINTS"

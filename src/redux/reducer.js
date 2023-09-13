@@ -2,6 +2,7 @@ import * as actions from "./Actions/actionsTypes.js";
 
 const initialState = {
   loggedUser: [],
+  searchedUsers: [],
   randomQuestion: [],
   userDetail: [],
   rankingList: [],
@@ -13,6 +14,11 @@ export default function rootReducer(state = initialState, payload) {
       return {
         ...state,
         loggedUser: payload.payload,
+      };
+      case actions.GET_USERS_BY_NAME:
+      return {
+        ...state,
+        searchedUsers: payload.payload,
       };
     case actions.GET_USER_DETAIL:
       return {

@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
   },
   questionText: {
     fontSize: 20,
-    fontWeight: 400,
+    fontWeight: "400",
     textAlign: "center",
   },
   answerText: {
