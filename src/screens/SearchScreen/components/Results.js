@@ -1,4 +1,10 @@
-import { FlatList, StyleSheet, Text } from "react-native";
+import {
+  FlatList,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+} from "react-native";
 import { useSelector } from "react-redux";
 import ResultsCard from "./ResultsCard";
 
@@ -6,19 +12,20 @@ export default function Results() {
   const searchedUsers = useSelector((state) => state.searchedUsers.users);
   console.log(searchedUsers);
   return (
-    <FlatList
-      style={styles.container}
-      data={searchedUsers}
-      ItemSeparatorComponent={() => <Text> </Text>}
-      renderItem={({ item: user, index }) => (
-        <ResultsCard
-          userName={user.nombre}
-          userPoints={user.puntos}
-          userImage={user.imagen}
-          userId={user.id}
+    <SafeAreaView style={styles.container}>
+        <FlatList
+          data={searchedUsers}
+          ItemSeparatorComponent={() => <Text> </Text>}
+          renderItem={({ item: user, index }) => (
+            <ResultsCard
+              userName={user.nombre}
+              userPoints={user.puntos}
+              userImage={user.imagen}
+              userId={user.id}
+            />
+          )}
         />
-      )}
-    />
+    </SafeAreaView>
   );
 }
 

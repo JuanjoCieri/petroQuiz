@@ -48,11 +48,12 @@ const styles = StyleSheet.create({
   },
   userInfo: {
     width: "75%",
-    maxWidth: "55%",
+    maxWidth: "75%",
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "center",
     gap: 10,
+    paddingLeft: 15
   },
   userImage: {
     width: 50,
