@@ -5,17 +5,25 @@ import { StatusBar } from "expo-status-bar";
 import { useNavigation } from "@react-navigation/native";
 import NewTournamentButton from "./components/NewTournamentButton";
 import TournamentsList from "./components/TournamentsList";
+import NewTournamentModal from "./components/NewTournamentModal";
+import { useState } from "react";
 
 export default function TournamentScreen() {
   const navigation = useNavigation();
+  const [open, setOpen] = useState(false);
 
   const handleBackToHome = () => {
     navigation.goBack();
   };
 
+  function openModal () {
+    setOpen(!open);
+  };
+
   return (
     <>
       <View style={styles.container}>
+        {open ? <NewTournamentModal openModal={openModal}/> : false}
         <View className="py-5">
           <StatusBar />
           <View style={styles.header}>
@@ -26,7 +34,7 @@ export default function TournamentScreen() {
             <ChevronLeftIcon size={30} color="transparent" />
           </View>
         </View>
-        <NewTournamentButton />
+        <NewTournamentButton openModal={openModal} />
         <TournamentsList />
       </View>
     </>

@@ -6,10 +6,10 @@ import {
   View,
 } from "react-native";
 
-export default function NewTournamentButton() {
+export default function NewTournamentButton({openModal}) {
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={() => openModal()}>
         <Text style={{ color: "white", fontWeight: "700", fontSize: 20 }}>Crear nuevo</Text>
       </TouchableOpacity>
     </View>

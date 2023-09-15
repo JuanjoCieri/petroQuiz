@@ -6,6 +6,7 @@ const initialState = {
   randomQuestion: [],
   userDetail: [],
   rankingList: [],
+  allTournaments: []
 };
 
 export default function rootReducer(state = initialState, payload) {
@@ -15,7 +16,7 @@ export default function rootReducer(state = initialState, payload) {
         ...state,
         loggedUser: payload.payload,
       };
-      case actions.GET_USERS_BY_NAME:
+    case actions.GET_USERS_BY_NAME:
       return {
         ...state,
         searchedUsers: payload.payload,
@@ -40,6 +41,23 @@ export default function rootReducer(state = initialState, payload) {
         ...state,
       };
     case actions.POST_AUTHENTICATE_WITH_GOOGLE:
+      return {
+        ...state,
+      };
+      case actions.GET_ALL_TOURNAMENTS:
+      return {
+        ...state,
+        allTournaments: payload.payload,
+      };
+    case actions.POST_NEW_TOURNAMENT:
+      return {
+        ...state,
+      };
+    case actions.POST_JOIN_TOURNAMENT:
+      return {
+        ...state,
+      };
+    case actions.POST_TOURNAMENT_POINTS:
       return {
         ...state,
       };

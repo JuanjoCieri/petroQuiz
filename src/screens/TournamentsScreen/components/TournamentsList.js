@@ -1,11 +1,21 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
-import tournaments from "../../../mocks/tournaments.js";
 import TournamentsCard from "./TournamentsCard.js";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getAllTournaments } from "../../../redux/Actions/index.js";
 export default function TournamentsList() {
+  const tournaments = useSelector((state) => state.allTournaments);
+  const dispatch = useDispatch();
+  console.log(tournaments)
+
+  useEffect(() => {
+    dispatch(getAllTournaments());
+  }, [dispatch]);
+
   return (
     <FlatList
       style={styles.container}
-      data={tournaments}
+      data={tournaments.tournaments}
       ItemSeparatorComponent={() => <Text> </Text>}
       renderItem={({ item: tournament, index }) => (
         <TournamentsCard

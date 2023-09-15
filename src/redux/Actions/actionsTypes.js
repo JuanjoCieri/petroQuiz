@@ -15,5 +15,15 @@ export const GET_RANDOM_QUESTION = "GET_RANDOM_QUESTION"
 
 // End Questions Actions
 
+// Tournaments Actions
+
+export const GET_ALL_TOURNAMENTS = "GET_ALL_TOURNAMENTS"
+export const POST_NEW_TOURNAMENT = "POST_NEW_TOURNAMENT"
+export const POST_JOIN_TOURNAMENT = "POST_JOIN_TOURNAMENT"
+export const POST_TOURNAMENT_POINTS = "POST_TOURNAMENT_POINTS" 
+
+// End Tournaments Actions
+
+
 export const CLEAR_STATE = "CLEAR_STATE"
 export const CLEAR_STATE_USER_DETAIL = "CLEAR_STATE_USER_DETAIL"

@@ -132,6 +132,71 @@ export function postGamePoints(payload) {
   };
 }
 
+export function postTournamentPoints(payload) {
+  return async (dispatch) => {
+    try {
+      const response = await axios.patch(
+        `https://petroquiz-back-1qeh-dev.fl0.io/tournaments/sumPoints`, payload
+      );
+      dispatch({
+        type: actions.POST_TOURNAMENT_POINTS,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function postNewTournament(payload) {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post(
+        `https://petroquiz-back-1qeh-dev.fl0.io/tournaments/createNewTournament`, payload
+      );
+      dispatch({
+        type: actions.POST_NEW_TOURNAMENT,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function postJoinTournament(payload) {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post(
+        `https://petroquiz-back-1qeh-dev.fl0.io/tournaments/joinTournament`, payload
+      );
+      console.log(response, "acá response")
+      dispatch({
+        type: actions.POST_JOIN_TOURNAMENT,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function getAllTournaments() {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(
+        `https://petroquiz-back-1qeh-dev.fl0.io/tournaments/getTournaments`
+      );
+      dispatch({
+        type: actions.GET_ALL_TOURNAMENTS,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
 export function clearState(payload) {
   return {
     type: actions.CLEAR_STATE,
