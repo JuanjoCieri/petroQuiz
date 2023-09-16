@@ -78,6 +78,11 @@ export default function AppNavigation() {
             options={{ headerShown: false }}
             component={SearchScreen}
           />
+          <Stack.Screen
+            name="TournamentDetailScreen"
+            options={{ headerShown: false }}
+            component={TournamentScreen}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     );

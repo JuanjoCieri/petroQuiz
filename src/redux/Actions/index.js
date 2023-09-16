@@ -197,6 +197,23 @@ export function getAllTournaments() {
   };
 }
 
+export function getTournamentDetail(id) {
+  return async (dispatch) => {
+    try {
+      console.log(id, "ID")
+      const response = await axios.get(
+        `https://petroquiz-back-1qeh-dev.fl0.io/tournaments/getTournamentDetail/`, + id
+      );
+      dispatch({
+        type: actions.GET_TOURNAMENT_DETAIL,
+        payload: response.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
 export function clearState(payload) {
   return {
     type: actions.CLEAR_STATE,

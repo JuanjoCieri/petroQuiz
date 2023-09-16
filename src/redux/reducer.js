@@ -6,7 +6,8 @@ const initialState = {
   randomQuestion: [],
   userDetail: [],
   rankingList: [],
-  allTournaments: []
+  allTournaments: [],
+  tournamentDetail: []
 };
 
 export default function rootReducer(state = initialState, payload) {
@@ -56,6 +57,11 @@ export default function rootReducer(state = initialState, payload) {
     case actions.POST_JOIN_TOURNAMENT:
       return {
         ...state,
+      };
+      case actions.GET_TOURNAMENT_DETAIL:
+      return {
+        ...state,
+        tournamentDetail: payload.payload
       };
     case actions.POST_TOURNAMENT_POINTS:
       return {

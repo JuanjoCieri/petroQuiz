@@ -1,6 +1,9 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { ClockIcon, UserGroupIcon } from "react-native-heroicons/solid";
+import { useDispatch } from "react-redux";
+import { getTournamentDetail } from "../../../redux/Actions";
 
 export default function TournamentsCard({
   tournamentName,
@@ -9,9 +12,11 @@ export default function TournamentsCard({
   tournamentCreation,
   tournamentInit,
   tournamentFinish,
+  tournamentId
 }) {
   const [timeRemaining, setTimeRemaining] = useState(""); // Estado para el tiempo restante
-
+  const navigation = useNavigation()
+  const dispatch = useDispatch()
   useEffect(() => {
 
     const calculateTimeRemaining = () => {
@@ -35,8 +40,14 @@ export default function TournamentsCard({
     return () => clearInterval(intervalId); 
   }, [tournamentInit]);
 
+  const handleTournamentDetail = () => {
+    console.log("hola")
+    navigation.navigate("TournamentDetailScreen");
+    dispatch(getTournamentDetail(tournamentId))
+  };
+
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={handleTournamentDetail}>
       <View style={styles.left}>
         <Text style={styles.tournamentName}>{tournamentName}</Text>
         <Text style={styles.tournamentOwner}>Creado por {tournamentOwner}</Text>

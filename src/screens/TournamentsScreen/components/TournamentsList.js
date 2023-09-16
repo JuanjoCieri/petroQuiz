@@ -25,6 +25,7 @@ export default function TournamentsList() {
           tournamentCreation={tournament.fechaCreacion}
           tournamentInit={tournament.fechaInicio}
           tournamentFinish={tournament.fechaFinalizacion}
+          tournamentId={tournament.id}
         />
       )}
     />
