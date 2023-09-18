@@ -21,10 +21,11 @@ import {
 import Leaderboard from "../screens/LeaderboardScreen/Leaderboard";
 import LandingScreen from "../screens/LandingScreen/LandingScreen";
 import PlayScreen from "../screens/PlayScreen/PlayScreen";
-import TournamentScreen from "../screens/TournamentsScreen/TournamentScreen";
 import ProfileScreen from "../screens/ProfileScreen/ProfileScreen";
 import { useGetLoggedUser } from "../hooks/useGetLoggedUser";
 import SearchScreen from "../screens/SearchScreen/SearchScreen";
+import TournamentsScreen from "../screens/TournamentsScreen/TournamentsScreen";
+import TournamentScreen from "../screens/TournamentScreen/TournamentScreen";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -66,7 +67,7 @@ export default function AppNavigation() {
           <Stack.Screen
             name="Tournament"
             options={{ headerShown: false }}
-            component={TournamentScreen}
+            component={TournamentsScreen}
           />
           <Stack.Screen
             name="PlayScreen"
@@ -110,7 +111,7 @@ function HomeTabs() {
     >
       <Tab.Screen name="HomeScreen" component={HomeScreen} />
       <Tab.Screen name="LeaderboardScreen" component={Leaderboard} />
-      <Tab.Screen name="TournamentScreen" component={TournamentScreen} />
+      <Tab.Screen name="TournamentScreen" component={TournamentsScreen} />
       <Tab.Screen name="ProfileScreen" component={ProfileScreen} />
     </Tab.Navigator>
   );

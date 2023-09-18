@@ -7,7 +7,7 @@ const initialState = {
   userDetail: [],
   rankingList: [],
   allTournaments: [],
-  tournamentDetail: []
+  tournamentDetail: [],
 };
 
 export default function rootReducer(state = initialState, payload) {
@@ -45,7 +45,7 @@ export default function rootReducer(state = initialState, payload) {
       return {
         ...state,
       };
-      case actions.GET_ALL_TOURNAMENTS:
+    case actions.GET_ALL_TOURNAMENTS:
       return {
         ...state,
         allTournaments: payload.payload,
@@ -58,10 +58,10 @@ export default function rootReducer(state = initialState, payload) {
       return {
         ...state,
       };
-      case actions.GET_TOURNAMENT_DETAIL:
+    case actions.GET_TOURNAMENT_DETAIL:
       return {
         ...state,
-        tournamentDetail: payload.payload
+        tournamentDetail: payload.payload,
       };
     case actions.POST_TOURNAMENT_POINTS:
       return {

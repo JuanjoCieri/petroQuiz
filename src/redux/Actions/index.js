@@ -202,7 +202,7 @@ export function getTournamentDetail(id) {
     try {
       console.log(id, "ID")
       const response = await axios.get(
-        `https://petroquiz-back-1qeh-dev.fl0.io/tournaments/getTournamentDetail/`, + id
+        `https://petroquiz-back-1qeh-dev.fl0.io/tournaments/getTournamentDetail/${id}`,
       );
       dispatch({
         type: actions.GET_TOURNAMENT_DETAIL,

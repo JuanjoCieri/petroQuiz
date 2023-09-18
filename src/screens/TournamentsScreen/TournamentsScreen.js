@@ -8,7 +8,7 @@ import TournamentsList from "./components/TournamentsList";
 import NewTournamentModal from "./components/NewTournamentModal";
 import { useState } from "react";
 
-export default function TournamentScreen() {
+export default function TournamentsScreen() {
   const navigation = useNavigation();
   const [open, setOpen] = useState(false);
 
