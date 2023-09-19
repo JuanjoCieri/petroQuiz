@@ -26,6 +26,7 @@ import { useGetLoggedUser } from "../hooks/useGetLoggedUser";
 import SearchScreen from "../screens/SearchScreen/SearchScreen";
 import TournamentsScreen from "../screens/TournamentsScreen/TournamentsScreen";
 import TournamentScreen from "../screens/TournamentScreen/TournamentScreen";
+import PlayTournamentScreen from "../screens/PlayTournamentScreen/PlayTournamentScreen"
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -83,6 +84,11 @@ export default function AppNavigation() {
             name="TournamentDetailScreen"
             options={{ headerShown: false }}
             component={TournamentScreen}
+          />
+          <Stack.Screen 
+          name="PlayTournamentScreen"
+          options={{headerShown: false}}
+          component={PlayTournamentScreen}
           />
         </Stack.Navigator>
       </NavigationContainer>

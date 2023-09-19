@@ -8,6 +8,7 @@ const initialState = {
   rankingList: [],
   allTournaments: [],
   tournamentDetail: [],
+  currentTournament: [],
 };
 
 export default function rootReducer(state = initialState, payload) {
@@ -36,6 +37,11 @@ export default function rootReducer(state = initialState, payload) {
       return {
         ...state,
         rankingList: payload.payload,
+      };
+    case actions.SET_CURRENT_TOURNAMENT:
+      return {
+        ...state,
+        currentTournament: payload.payload,
       };
     case actions.POST_GAME_POINTS:
       return {

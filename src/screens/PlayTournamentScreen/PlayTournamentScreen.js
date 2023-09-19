@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Text, ActivityIndicator } from "react-native";
-import SpinWheel from "./components/SpinWheel";
-import Play from "./components/Play";
+import SpinWheel from "../PlayScreen/components/SpinWheel";
+import Play from "../PlayScreen/components/Play";
 import Results from "./components/Results";
 import { useRandomQuestion } from "../../hooks/useRandomQuestion";
+import { useSelector } from "react-redux";
 export default function PlayScreen() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [questionsAnswered, setQuestionsAnswered] = useState(0);
   const [score, setScore] = useState(0);
   const [isLastQuestion, setIsLastQuestion] = useState(false);
+  const currenttt = useSelector((state) => state.currentTournament)
+
+  console.log(currenttt, "CURRENT PA")
 
   const handleOptionSelected = (isCorrect) => {
     setSelectedCategory(null);

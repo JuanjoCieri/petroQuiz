@@ -170,7 +170,6 @@ export function postJoinTournament(payload) {
       const response = await axios.post(
         `https://petroquiz-back-1qeh-dev.fl0.io/tournaments/joinTournament`, payload
       );
-      console.log(response, "acá response")
       dispatch({
         type: actions.POST_JOIN_TOURNAMENT,
         payload: response.data,
@@ -211,6 +210,13 @@ export function getTournamentDetail(id) {
     } catch (error) {
       console.log(error);
     }
+  };
+}
+
+export function setCurrentTournament(payload) {
+  return {
+    type: actions.SET_CURRENT_TOURNAMENT,
+    payload,
   };
 }
 
