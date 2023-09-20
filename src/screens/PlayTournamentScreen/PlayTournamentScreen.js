@@ -10,9 +10,6 @@ export default function PlayScreen() {
   const [questionsAnswered, setQuestionsAnswered] = useState(0);
   const [score, setScore] = useState(0);
   const [isLastQuestion, setIsLastQuestion] = useState(false);
-  const currenttt = useSelector((state) => state.currentTournament)
-
-  console.log(currenttt, "CURRENT PA")
 
   const handleOptionSelected = (isCorrect) => {
     setSelectedCategory(null);

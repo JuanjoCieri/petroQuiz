@@ -133,6 +133,7 @@ export function postGamePoints(payload) {
 }
 
 export function postTournamentPoints(payload) {
+  console.log(payload)
   return async (dispatch) => {
     try {
       const response = await axios.patch(

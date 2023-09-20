@@ -4,6 +4,8 @@ import useCalculateTimeRemainingWithLimits from "../../../hooks/useCalculateTime
 export default function TimeCard ({tournamentInit, tournamentCreation, tournamentFinish}) {
   const timeRemaining = useCalculateTimeRemainingWithLimits(tournamentInit, tournamentCreation, tournamentFinish);
 
+  console.log(timeRemaining)
+
     return (
         <View style={styles.container}>
             <Text style={{color: "white"}}>

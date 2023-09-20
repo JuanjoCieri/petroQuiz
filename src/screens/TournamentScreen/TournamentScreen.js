@@ -11,6 +11,7 @@ import useUserInTournament from "../../hooks/useUserInTournament";
 
 export default function TournamentScreen() {
   const tournamentDetail = useSelector((state) => state.tournamentDetail);
+  console.log(tournamentDetail, "tournament DETAIL")
   const navigation = useNavigation();
   const isUserInTournament = useUserInTournament(tournamentDetail.id);
 

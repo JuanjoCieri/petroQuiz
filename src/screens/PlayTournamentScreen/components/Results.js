@@ -4,10 +4,11 @@ import { useNavigation } from "@react-navigation/native";
 import ConfettiCannon from "react-native-confetti-cannon";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { postGamePoints } from "../../../redux/Actions";
+import { postGamePoints, postTournamentPoints } from "../../../redux/Actions";
 
 export default function Results({ score }) {
   const loggedUser = useSelector((state) => state.loggedUser)
+  const currentTournamet = useSelector((state) => state.currentTournament)
   const navigation = useNavigation();
 
   const handleBackHome = () => {
@@ -18,11 +19,12 @@ export default function Results({ score }) {
 
   useEffect(() => {
     const payload = {
-      userId: loggedUser.id,
-      points: score
+      usuarioId: loggedUser.id,
+      torneoId: currentTournamet.id,
+      puntos: score
     }
-    dispatch(postGamePoints(payload))
-  }, [score, loggedUser.id, dispatch])
+    dispatch(postTournamentPoints(payload))
+  }, [score, loggedUser.id, currentTournamet.id, dispatch])
 
   return (
     <>
@@ -38,7 +40,7 @@ export default function Results({ score }) {
         )}
         <View style={styles.banner}>
           <Text style={{ color: "white", fontSize: 25, fontWeight: "600" }}>
-            Torneoo
+            {currentTournamet?.nombre}
           </Text>
         </View>
         <View>
