@@ -12,7 +12,9 @@ export default function InputBar() {
     let timeoutId;
 
     const delayedDispatch = () => {
-      dispatch(getUsersByName(name));
+      if (name !== "") {
+        dispatch(getUsersByName(name));
+      }
     };
 
     clearTimeout(timeoutId);

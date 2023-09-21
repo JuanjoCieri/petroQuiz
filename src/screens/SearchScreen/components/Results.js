@@ -10,7 +10,6 @@ import ResultsCard from "./ResultsCard";
 
 export default function Results() {
   const searchedUsers = useSelector((state) => state.searchedUsers.users);
-  console.log(searchedUsers);
   return (
     <SafeAreaView style={styles.container}>
         <FlatList

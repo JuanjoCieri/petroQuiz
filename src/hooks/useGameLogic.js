@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { shuffleArray } from "../services/shuffleArray";
 
 export function useGameLogic(
   correctAnswer,
@@ -10,7 +11,9 @@ export function useGameLogic(
   const [selectedOption, setSelectedOption] = useState(null);
   const [hasAnswered, setHasAnswered] = useState(false);
 
-  const allOptions = [...incorrectAnswers, correctAnswer];
+  const all = [...incorrectAnswers, correctAnswer];
+
+  const allOptions = shuffleArray(all)
 
   const handleOptionClick = (option) => {
     if (!hasAnswered) {

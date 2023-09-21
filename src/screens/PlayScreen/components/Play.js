@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import { BlurView } from "expo-blur";
 import { useGameLogic } from "../../../hooks/useGameLogic";
-import { useGameTimer } from "../../../hooks/useGameTimer";
+import Counter from "./Counter";
 
 export default function Play({
   category,
@@ -12,7 +12,6 @@ export default function Play({
   question,
   handleOptionSelected,
 }) {
-  const { counter } = useGameTimer(); 
 
   const {
     isCorrectView,
@@ -34,7 +33,7 @@ export default function Play({
               <Text style={styles.categoryText}>{category}</Text>
             </View>
             <View style={styles.right}>
-              <Text style={styles.timerText}>{counter}"</Text>
+<Counter handleOptionClick={handleOptionClick} />
             </View>
           </View>
         </View>
