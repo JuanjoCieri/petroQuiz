@@ -5,7 +5,7 @@ const useCalculateTimeRemainingWithLimits = (tournamentInit, tournamentCreation,
 
   useEffect(() => {
     const now = new Date();
-    const initTime = new Date(tournamentInit);
+    const initTime = new Date(tournamentCreation);
     const creationTime = new Date(tournamentCreation);
     const finishTime = new Date(tournamentFinish);
 

@@ -10,15 +10,14 @@ export default function TournamentsCard({
   tournamentName,
   tournamentOwner,
   tournamentUsers,
-  tournamentCreation,
   tournamentInit,
+  tournamentStart,
   tournamentFinish,
   tournamentId
 }) {
   const navigation = useNavigation()
   const dispatch = useDispatch()
-  const timeRemaining = useCalculateTimeRemaining(tournamentInit);
-  
+  const timeRemaining = useCalculateTimeRemaining(tournamentStart, tournamentFinish);
 
   const handleTournamentDetail = () => {
     dispatch(getTournamentDetail(tournamentId))
@@ -29,7 +28,6 @@ export default function TournamentsCard({
     <TouchableOpacity style={styles.container} onPress={handleTournamentDetail}>
       <View style={styles.left}>
         <Text style={styles.tournamentName}>{tournamentName}</Text>
-        <Text style={styles.tournamentOwner}>Creado por {tournamentOwner}</Text>
       </View>
       <View style={styles.right}>
         <View style={{ flexDirection: "row", gap: 10, justifyContent: "center", alignItems: "center" }}>
@@ -61,7 +59,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     borderRightColor: "black",
     borderRightWidth: 0.5,
-    paddingLeft: 20,
+    paddingHorizontal: 20,
   },
   right: {
     width: "50%",

@@ -37,7 +37,7 @@ export default function TournamentScreen() {
           </View>
         </View>
         <View style={styles.info}>
-          <TimeCard tournamentInit={tournamentDetail.fechaInicio} tournamentCreation={tournamentDetail.fechaCreacion} tournamentFinish={tournamentDetail.fechaFinalizacion}/>
+          <TimeCard tournamentInit={tournamentDetail.fechaCreacion} tournamentStart={tournamentDetail.fechaInicio} tournamentFinish={tournamentDetail.fechaFinalizacion}/>
           {isUserInTournament ? <PlayButton tournamentDetail={tournamentDetail}/> : <JoinButton tournamentId={tournamentDetail.id}/>}
         </View>
         <RankingList tournamentUsers={tournamentDetail?.usuarios} />

@@ -12,7 +12,6 @@ export default function Play({
   question,
   handleOptionSelected,
 }) {
-
   const {
     isCorrectView,
     isCorrect,
@@ -33,7 +32,7 @@ export default function Play({
               <Text style={styles.categoryText}>{category}</Text>
             </View>
             <View style={styles.right}>
-<Counter handleOptionClick={handleOptionClick} />
+              <Counter handleOptionClick={handleOptionClick} />
             </View>
           </View>
         </View>
@@ -139,6 +138,7 @@ const styles = StyleSheet.create({
   categoryText: {
     color: "white",
     fontSize: 25,
+    textAlign: "center"
   },
   questionBox: {
     width: "100%",

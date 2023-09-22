@@ -28,7 +28,7 @@ const SpinWheel = ({
     { label: "Equipamiento", id: "1" },
     { label: "MDP", id: "4" },
     { label: "Métodos", id: "2" },
-    { label: "Maniobra", id: "3" },
+    { label: "Principios y Procedimientos", id: "3" },
   ];
 
   const onSpin = () => {

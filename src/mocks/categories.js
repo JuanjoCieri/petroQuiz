@@ -6,7 +6,7 @@ const categories = [
   },
   {
     categoryId: 2,
-    categoryName: "Maniobra",
+    categoryName: "Principios y Procedimientos",
     categoryImage: "maniobraIcon.png",
   },
   {

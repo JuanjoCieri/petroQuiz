@@ -6,7 +6,7 @@ import { getAllTournaments } from "../../../redux/Actions/index.js";
 export default function TournamentsList() {
   const tournaments = useSelector((state) => state.allTournaments);
   const dispatch = useDispatch();
-  console.log(tournaments)
+  console.log(tournaments, "acá");
 
   useEffect(() => {
     dispatch(getAllTournaments());
@@ -22,8 +22,8 @@ export default function TournamentsList() {
           tournamentName={tournament.nombre}
           tournamentOwner={tournament.creador}
           tournamentUsers={tournament.usuarios}
-          tournamentCreation={tournament.fechaCreacion}
-          tournamentInit={tournament.fechaInicio}
+          tournamentInit={tournament.fechaCreacion}
+          tournamentStart={tournament.fechaInicio}
           tournamentFinish={tournament.fechaFinalizacion}
           tournamentId={tournament.id}
         />
