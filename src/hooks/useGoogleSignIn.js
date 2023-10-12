@@ -4,7 +4,7 @@ import {
   statusCodes,
 } from "@react-native-google-signin/google-signin";
 import { useDispatch } from "react-redux";
-import { postAuthenticateWithGoogle } from "../redux/Actions"; // Asegúrate de importar la acción desde la ubicación correcta
+import { postAuthenticateWithGoogle } from "../redux/Actions"; 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export function useGoogleSignIn() {
