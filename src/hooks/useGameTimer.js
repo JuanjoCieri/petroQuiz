@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 export function useGameTimer() {
-  const initialTime = 30; // Establece el tiempo inicial en 30 segundos
+  const initialTime = 90; // Establece el tiempo inicial en 30 segundos
   const [counter, setCounter] = useState(initialTime);
   const [intervalId, setIntervalId] = useState(null);
 

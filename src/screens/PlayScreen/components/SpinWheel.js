@@ -26,7 +26,7 @@ const SpinWheel = ({
   // Define your wheel data (sections, colors, labels, etc.)
   const wheelData = [
     { label: "Equipamiento", id: "1" },
-    { label: "MDP", id: "4" },
+    { label: "MPD", id: "4" },
     { label: "Métodos", id: "2" },
     { label: "Principios y Procedimientos", id: "3" },
   ];

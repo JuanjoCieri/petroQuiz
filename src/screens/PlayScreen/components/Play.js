@@ -142,12 +142,12 @@ const styles = StyleSheet.create({
   },
   questionBox: {
     width: "100%",
-    height: "25%",
+    height: "33%",
     backgroundColor: "white",
     borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",
-    padding: 20,
+    padding: 16,
   },
   answerBox: {
     width: "100%",
@@ -156,10 +156,10 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",
-    paddingHorizontal: 20,
+    paddingHorizontal: 16,
   },
   questionText: {
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: "400",
     textAlign: "center",
   },

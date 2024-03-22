@@ -11,7 +11,7 @@ export function getUserDetail(id) {
     };
     try {
       const response = await axios.get(
-        `https://petroquiz-back-1qeh-dev.fl0.io/users/getUserDetail/` + id,
+        `https://petroquiz-back-dev-phhd.1.us-1.fl0.io/users/getUserDetail/` + id,
         { headers: headers, withCredentials: true }
       );
       dispatch({
@@ -32,7 +32,7 @@ export function getUsersByName(name) {
     };
     try {
       const response = await axios.get(
-        `https://petroquiz-back-1qeh-dev.fl0.io/users/getUsersByName?name=${name}`,
+        `https://petroquiz-back-dev-phhd.1.us-1.fl0.io/users/getUsersByName?name=${name}`,
         { headers: headers, withCredentials: true }
       );
       dispatch({
@@ -53,7 +53,7 @@ export function getLoggedUser(id) {
     };
     try {
       const response = await axios.get(
-        `https://petroquiz-back-1qeh-dev.fl0.io/users/getLoggedUser/` + id,
+        `https://petroquiz-back-dev-phhd.1.us-1.fl0.io/users/getLoggedUser/` + id,
         { headers: headers, withCredentials: true }
       );
       dispatch({
@@ -70,7 +70,7 @@ export function getLeaderboardRank() {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        `https://petroquiz-back-1qeh-dev.fl0.io/users/topPlayers`
+        `https://petroquiz-back-dev-phhd.1.us-1.fl0.io/users/topPlayers`
       );
       dispatch({
         type: actions.GET_LEADERBOARD_RANK,
@@ -86,7 +86,7 @@ export function postAuthenticateWithGoogle(payload) {
   return async (dispatch) => {
     try {
       const response = await axios.post(
-        `https://petroquiz-back-1qeh-dev.fl0.io/users/authenticateWithGoogle`, payload
+        `https://petroquiz-back-dev-phhd.1.us-1.fl0.io/users/authenticateWithGoogle`, payload
       );
       const id = response?.data.id
       await AsyncStorage.setItem("@userId", id)
@@ -104,7 +104,7 @@ export function getRandomQuestion(id) {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        `https://petroquiz-back-1qeh-dev.fl0.io/questions/getRandomQuestion/` + id,
+        `https://petroquiz-back-dev-phhd.1.us-1.fl0.io/questions/getRandomQuestion/` + id,
       );
       dispatch({
         type: actions.GET_RANDOM_QUESTION,
@@ -120,7 +120,7 @@ export function postGamePoints(payload) {
   return async (dispatch) => {
     try {
       const response = await axios.patch(
-        `https://petroquiz-back-1qeh-dev.fl0.io/users/savePoints`, payload
+        `https://petroquiz-back-dev-phhd.1.us-1.fl0.io/users/savePoints`, payload
       );
       dispatch({
         type: actions.POST_GAME_POINTS,
@@ -137,7 +137,7 @@ export function postTournamentPoints(payload) {
   return async (dispatch) => {
     try {
       const response = await axios.patch(
-        `https://petroquiz-back-1qeh-dev.fl0.io/tournaments/sumPoints`, payload
+        `https://petroquiz-back-dev-phhd.1.us-1.fl0.io/tournaments/sumPoints`, payload
       );
       dispatch({
         type: actions.POST_TOURNAMENT_POINTS,
@@ -153,7 +153,7 @@ export function postNewTournament(payload) {
   return async (dispatch) => {
     try {
       const response = await axios.post(
-        `https://petroquiz-back-1qeh-dev.fl0.io/tournaments/createNewTournament`, payload
+        `https://petroquiz-back-dev-phhd.1.us-1.fl0.io/tournaments/createNewTournament`, payload
       );
       dispatch({
         type: actions.POST_NEW_TOURNAMENT,
@@ -169,7 +169,7 @@ export function postJoinTournament(payload) {
   return async (dispatch) => {
     try {
       const response = await axios.post(
-        `https://petroquiz-back-1qeh-dev.fl0.io/tournaments/joinTournament`, payload
+        `https://petroquiz-back-dev-phhd.1.us-1.fl0.io/tournaments/joinTournament`, payload
       );
       dispatch({
         type: actions.POST_JOIN_TOURNAMENT,
@@ -185,7 +185,7 @@ export function getAllTournaments() {
   return async (dispatch) => {
     try {
       const response = await axios.get(
-        `https://petroquiz-back-1qeh-dev.fl0.io/tournaments/getTournaments`
+        `https://petroquiz-back-dev-phhd.1.us-1.fl0.io/tournaments/getTournaments`
       );
       dispatch({
         type: actions.GET_ALL_TOURNAMENTS,
@@ -200,9 +200,8 @@ export function getAllTournaments() {
 export function getTournamentDetail(id) {
   return async (dispatch) => {
     try {
-      console.log(id, "ID")
       const response = await axios.get(
-        `https://petroquiz-back-1qeh-dev.fl0.io/tournaments/getTournamentDetail/${id}`,
+        `https://petroquiz-back-dev-phhd.1.us-1.fl0.io/tournaments/getTournamentDetail/${id}`,
       );
       dispatch({
         type: actions.GET_TOURNAMENT_DETAIL,
